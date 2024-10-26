@@ -6,20 +6,30 @@
 using namespace sf;
 using namespace std;
 
+// Размеры сетки
+const int TILE_SIZE = 50; // Размер одной клетки
+const int GRID_WIDTH = 38; // Количество клеток по ширине
+const int GRID_HEIGHT = 22; // Количество клеток по высоте
+
 // Класс Enemy представляет врага в игре
 class Enemy {
 public:
-    // Конструктор, задающий начальное положение врага и его здоровье
-    Enemy(float x, float y) {
-        enemyShape.setSize(Vector2f(50.0f, 50.0f)); // Задаем размер врага
+    Enemy(int gridX, int gridY) {
+        enemyShape.setSize(Vector2f(TILE_SIZE, TILE_SIZE)); // Задаем размер врага
         enemyShape.setFillColor(Color::Blue); // Устанавливаем цвет врага
-        enemyShape.setPosition(x, y); // Устанавливаем позицию врага
-        health = 100; // Начальное здоровье врага
+        setPosition(gridX, gridY); // Устанавливаем позицию врага
+        maxHealth = 1000; // Максимальное здоровье врага
+        health = maxHealth; // Начальное здоровье врага
 
         // Инициализация полоски здоровья
-        healthBar.setSize(Vector2f(50.0f, 10.0f)); // Размер полоски здоровья
+        healthBar.setSize(Vector2f(TILE_SIZE, 10.0f)); // Размер полоски здоровья
         healthBar.setFillColor(Color::Red); // Цвет полоски здоровья
-        healthBar.setPosition(x, y - 15); // Позиция полоски здоровья над врагом
+        healthBar.setPosition(enemyShape.getPosition().x, enemyShape.getPosition().y - 15); // Позиция полоски здоровья над врагом
+    }
+
+    // Установка позиции врага на основе координат сетки
+    void setPosition(int gridX, int gridY) {
+        enemyShape.setPosition(gridX * TILE_SIZE, gridY * TILE_SIZE); // Установка позиции врага на сетке
     }
 
     // Возвращает форму врага
@@ -36,7 +46,9 @@ public:
 
     // Обновление полоски здоровья врага в зависимости от его текущего здоровья
     void updateHealthBar() {
-        healthBar.setSize(Vector2f(50.0f * (health / 100.0f), 10.0f)); // Изменяем ширину полоски
+        // Рассчитываем ширину полоски здоровья на основе процента здоровья
+        float healthPercentage = static_cast<float>(health) / maxHealth; // Процент здоровья
+        healthBar.setSize(Vector2f(TILE_SIZE * healthPercentage, 10.0f)); // Изменяем ширину полоски
         healthBar.setPosition(enemyShape.getPosition().x, enemyShape.getPosition().y - 15); // Обновляем позицию
     }
 
@@ -44,23 +56,23 @@ private:
     RectangleShape enemyShape; // Форма врага
     RectangleShape healthBar; // Полоска здоровья врага
     int health; // Текущее здоровье врага
+    int maxHealth; // Максимальное здоровье врага
 };
 
 // Класс Game отвечает за основную логику игры
 class Game {
 public:
-    // Конструктор, который инициализирует окно и игрока
     Game() {
-        window.create(VideoMode(800, 600), "RPG Game"); // Создание игрового окна
+        window.create(VideoMode(GRID_WIDTH * TILE_SIZE, GRID_HEIGHT * TILE_SIZE), "RPG Game"); // Создание игрового окна
         window.setFramerateLimit(60); // Установка ограничения на количество кадров
 
         // Настройка игрока
-        player.setSize(Vector2f(50.0f, 50.0f)); // Задаем размер игрока
+        player.setSize(Vector2f(TILE_SIZE, TILE_SIZE)); // Задаем размер игрока
         player.setFillColor(Color::Green); // Устанавливаем цвет игрока
-        player.setPosition(375.0f, 275.0f); // Устанавливаем позицию игрока (центр экрана)
+        player.setPosition(2 * TILE_SIZE, 2 * TILE_SIZE); // Начальная позиция игрока
 
         // Инициализация полоски здоровья игрока
-        playerHealthBar.setSize(Vector2f(50.0f, 10.0f)); // Размер полоски здоровья игрока
+        playerHealthBar.setSize(Vector2f(TILE_SIZE, 10.0f)); // Размер полоски здоровья игрока
         playerHealthBar.setFillColor(Color::Red); // Цвет полоски здоровья игрока
         playerHealthBar.setPosition(player.getPosition().x, player.getPosition().y - 15); // Позиция над игроком
 
@@ -68,7 +80,6 @@ public:
         createMap();
     }
 
-    // Метод, запускающий главный игровой цикл
     void run() {
         while (window.isOpen()) {
             handleEvents(); // Обработка событий
@@ -82,14 +93,14 @@ private:
     RectangleShape player; // Форма игрока
     RectangleShape playerHealthBar; // Полоска здоровья игрока
     vector<unique_ptr<Enemy>> enemies; // Вектор, содержащий врагов
+    bool canMove = true; // Флаг для отслеживания, может ли игрок двигаться
+    int playerMaxHealth = 100; // Максимальное здоровье игрока
+    int playerHealth = 100; // Текущее здоровье игрока
 
-    // Метод для создания карты и добавления врагов
     void createMap() {
-        // Добавление примера врага на карту
-        enemies.push_back(make_unique<Enemy>(600.0f, 400.0f));
+        enemies.push_back(make_unique<Enemy>(12, 8)); // Позиция врага в клетках
     }
 
-    // Метод для обработки событий (например, нажатий клавиш)
     void handleEvents() {
         Event event;
         while (window.pollEvent(event)) {
@@ -99,52 +110,93 @@ private:
         }
     }
 
-    // Метод для обновления состояния игры
     void update() {
-        // Управление движением игрока
+        Vector2i moveDirection(0, 0);
+
         if (Keyboard::isKeyPressed(Keyboard::W)) {
-            player.move(0, -5); // Движение вверх
+            moveDirection.y = -1; // Движение вверх
         }
         if (Keyboard::isKeyPressed(Keyboard::S)) {
-            player.move(0, 5); // Движение вниз
+            moveDirection.y = 1; // Движение вниз
         }
         if (Keyboard::isKeyPressed(Keyboard::A)) {
-            player.move(-5, 0); // Движение влево
+            moveDirection.x = -1; // Движение влево
         }
         if (Keyboard::isKeyPressed(Keyboard::D)) {
-            player.move(5, 0); // Движение вправо
+            moveDirection.x = 1; // Движение вправо
         }
+
+        if (moveDirection.x != 0 || moveDirection.y != 0) {
+            if (canMove) {
+                int newX = (player.getPosition().x / TILE_SIZE) + moveDirection.x;
+                int newY = (player.getPosition().y / TILE_SIZE) + moveDirection.y;
+
+                if (newX >= 0 && newX < GRID_WIDTH && newY >= 0 && newY < GRID_HEIGHT) {
+                    player.setPosition(newX * TILE_SIZE, newY * TILE_SIZE);
+                    canMove = false; // Блокируем дальнейшее движение
+                }
+            }
+        }
+        else {
+            canMove = true; // Разрешаем движение снова
+        }
+
+        // Обновление полоски здоровья игрока
+        float playerHealthPercentage = static_cast<float>(playerHealth) / playerMaxHealth;
+        playerHealthBar.setSize(Vector2f(TILE_SIZE * playerHealthPercentage, 10.0f)); // Изменяем ширину полоски здоровья игрока
+        playerHealthBar.setPosition(player.getPosition().x, player.getPosition().y - 15); // Обновляем позицию полоски здоровья игрока
 
         // Проверка атаки врага
         if (Keyboard::isKeyPressed(Keyboard::Space)) {
             for (auto& enemy : enemies) {
-                // Проверка на столкновение с врагом
                 if (player.getGlobalBounds().intersects(enemy->getShape().getGlobalBounds()) && enemy->isAlive()) {
                     enemy->takeDamage(20); // Урон врагу
                     enemy->updateHealthBar(); // Обновляем полоску здоровья врага
                     if (!enemy->isAlive()) {
                         cout << "Enemy defeated!" << endl; // Вывод сообщения о победе над врагом
+                        // Удаляем мертвого врага из списка (опционально)
+                        enemies.erase(remove_if(enemies.begin(), enemies.end(),
+                            [](const unique_ptr<Enemy>& e) { return !e->isAlive(); }),
+                            enemies.end());
                     }
                     break; // Атакуем только одного врага
                 }
             }
         }
 
-        // Обновляем позицию полоски здоровья игрока
-        playerHealthBar.setPosition(player.getPosition().x, player.getPosition().y - 15); // Перемещение полоски здоровья
+        // Обновляем полоски здоровья врагов
+        for (auto& enemy : enemies) {
+            enemy->updateHealthBar(); // Обновляем полоски здоровья для всех врагов
+        }
     }
 
-    // Метод для отрисовки объектов на экране
     void render() {
         window.clear(); // Очистка окна
-        for (const auto& enemy : enemies) {
-            if (enemy->isAlive()) {
-                window.draw(enemy->getShape()); // Рисуем врагов
-                window.draw(enemy->getHealthBar()); // Рисуем полоску здоровья врага
+
+        // Рисуем сетку
+        for (int x = 0; x < GRID_WIDTH; x++) {
+            for (int y = 0; y < GRID_HEIGHT; y++) {
+                RectangleShape tile(Vector2f(TILE_SIZE, TILE_SIZE)); // Создаем квадрат для клетки
+                tile.setPosition(x * TILE_SIZE, y * TILE_SIZE); // Установка позиции клетки
+                tile.setFillColor(Color::Transparent); // Прозрачный цвет клетки
+                tile.setOutlineThickness(1); // Толщина рамки
+                tile.setOutlineColor(Color::White); // Цвет рамки
+                window.draw(tile); // Рисуем клетку
             }
         }
+
+        // Рисуем врагов и их полоски здоровья
+        for (auto& enemy : enemies) {
+            if (enemy->isAlive()) { // Проверяем, жив ли враг
+                window.draw(enemy->getShape()); // Рисуем врага
+                enemy->updateHealthBar(); // Обновляем полоску здоровья
+                window.draw(enemy->getHealthBar()); // Рисуем полоску здоровья
+            }
+        }
+
         window.draw(player); // Рисуем игрока
         window.draw(playerHealthBar); // Рисуем полоску здоровья игрока
+
         window.display(); // Отображение всего на экране
     }
 };
