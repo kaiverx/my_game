@@ -54,4 +54,4 @@ sfml-system-s-d.lib(MutexImpl.obj) : warning LNK4099: "" PDB не найден �
 sfml-system-s-d.lib(ClockImpl.obj) : warning LNK4099: "" PDB не найден с "sfml-system-s-d.lib(ClockImpl.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
 sfml-system-s-d.lib(SleepImpl.obj) : warning LNK4099: "" PDB не найден с "sfml-system-s-d.lib(SleepImpl.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
 sfml-system-s-d.lib(ThreadLocalImpl.obj) : warning LNK4099: "" PDB не найден с "sfml-system-s-d.lib(ThreadLocalImpl.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
-  roguelike.vcxproj -> C:\Users\Dmitry\OneDrive\Рабочий стол\текстовики\курсач\roguelike\x64\Debug\roguelike.exe
+  roguelike.vcxproj -> C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\x64\Debug\roguelike.exe
