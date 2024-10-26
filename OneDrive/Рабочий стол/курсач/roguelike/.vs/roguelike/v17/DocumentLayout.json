@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Dmitry\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\\u043A\u0443\u0440\u0441\u0430\u0447\\roguelike\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A38C6838-29F9-4408-90E2-0D517894EB88}|roguelike\\roguelike.vcxproj|C:\\Users\\Dmitry\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\\u043A\u0443\u0440\u0441\u0430\u0447\\roguelike\\roguelike\\roguelike.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A38C6838-29F9-4408-90E2-0D517894EB88}|roguelike\\roguelike.vcxproj|solutionrelative:roguelike\\roguelike.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "roguelike.cpp",
+              "DocumentMoniker": "C:\\Users\\Dmitry\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\\u043A\u0443\u0440\u0441\u0430\u0447\\roguelike\\roguelike\\roguelike.cpp",
+              "RelativeDocumentMoniker": "roguelike\\roguelike.cpp",
+              "ToolTip": "C:\\Users\\Dmitry\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\\u043A\u0443\u0440\u0441\u0430\u0447\\roguelike\\roguelike\\roguelike.cpp",
+              "RelativeToolTip": "roguelike\\roguelike.cpp",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAAAEMAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-05-23T12:35:30.594Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
