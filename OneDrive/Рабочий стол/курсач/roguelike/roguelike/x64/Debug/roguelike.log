@@ -1,18 +1,39 @@
 ﻿  roguelike.cpp
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\roguelike.cpp(32,57): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\roguelike.cpp(32,38): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\roguelike.cpp(131,26): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\roguelike.cpp(131,26): warning C4244:         with
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\roguelike.cpp(131,26): warning C4244:         [
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\roguelike.cpp(131,26): warning C4244:             T=float
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\roguelike.cpp(131,26): warning C4244:         ]
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\roguelike.cpp(132,26): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\roguelike.cpp(132,26): warning C4244:         with
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\roguelike.cpp(132,26): warning C4244:         [
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\roguelike.cpp(132,26): warning C4244:             T=float
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\roguelike.cpp(132,26): warning C4244:         ]
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\roguelike.cpp(135,63): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\roguelike.cpp(135,45): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\roguelike.cpp(180,51): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\roguelike.cpp(180,36): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\roguelike.cpp(33,57): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\roguelike.cpp(33,38): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\roguelike.cpp(157,26): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\roguelike.cpp(157,26): warning C4244:         with
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\roguelike.cpp(157,26): warning C4244:         [
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\roguelike.cpp(157,26): warning C4244:             T=float
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\roguelike.cpp(157,26): warning C4244:         ]
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\roguelike.cpp(158,26): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\roguelike.cpp(158,26): warning C4244:         with
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\roguelike.cpp(158,26): warning C4244:         [
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\roguelike.cpp(158,26): warning C4244:             T=float
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\roguelike.cpp(158,26): warning C4244:         ]
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\roguelike.cpp(162,63): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\roguelike.cpp(162,45): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\roguelike.cpp(211,51): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\roguelike.cpp(211,36): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+sfml-graphics-s-d.lib(Font.obj) : warning LNK4099: "" PDB не найден с "sfml-graphics-s-d.lib(Font.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
+sfml-graphics-s-d.lib(GLCheck.obj) : warning LNK4099: "" PDB не найден с "sfml-graphics-s-d.lib(GLCheck.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
+sfml-graphics-s-d.lib(Image.obj) : warning LNK4099: "" PDB не найден с "sfml-graphics-s-d.lib(Image.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
+sfml-graphics-s-d.lib(ImageLoader.obj) : warning LNK4099: "" PDB не найден с "sfml-graphics-s-d.lib(ImageLoader.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
+sfml-graphics-s-d.lib(RenderTarget.obj) : warning LNK4099: "" PDB не найден с "sfml-graphics-s-d.lib(RenderTarget.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
+sfml-graphics-s-d.lib(Shader.obj) : warning LNK4099: "" PDB не найден с "sfml-graphics-s-d.lib(Shader.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
+sfml-graphics-s-d.lib(Texture.obj) : warning LNK4099: "" PDB не найден с "sfml-graphics-s-d.lib(Texture.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
+sfml-graphics-s-d.lib(Shape.obj) : warning LNK4099: "" PDB не найден с "sfml-graphics-s-d.lib(Shape.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
+sfml-graphics-s-d.lib(Text.obj) : warning LNK4099: "" PDB не найден с "sfml-graphics-s-d.lib(Text.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
+sfml-graphics-s-d.lib(VertexArray.obj) : warning LNK4099: "" PDB не найден с "sfml-graphics-s-d.lib(VertexArray.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
+sfml-graphics-s-d.lib(RenderTextureImplFBO.obj) : warning LNK4099: "" PDB не найден с "sfml-graphics-s-d.lib(RenderTextureImplFBO.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
+sfml-window-s-d.lib(GlContext.obj) : warning LNK4099: "" PDB не найден с "sfml-window-s-d.lib(GlContext.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
+sfml-window-s-d.lib(JoystickManager.obj) : warning LNK4099: "" PDB не найден с "sfml-window-s-d.lib(JoystickManager.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
+sfml-window-s-d.lib(VideoMode.obj) : warning LNK4099: "" PDB не найден с "sfml-window-s-d.lib(VideoMode.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
+sfml-window-s-d.lib(WindowImpl.obj) : warning LNK4099: "" PDB не найден с "sfml-window-s-d.lib(WindowImpl.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
+sfml-window-s-d.lib(JoystickImpl.obj) : warning LNK4099: "" PDB не найден с "sfml-window-s-d.lib(JoystickImpl.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
+sfml-window-s-d.lib(VideoModeImpl.obj) : warning LNK4099: "" PDB не найден с "sfml-window-s-d.lib(VideoModeImpl.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
+sfml-window-s-d.lib(VulkanImplWin32.obj) : warning LNK4099: "" PDB не найден с "sfml-window-s-d.lib(VulkanImplWin32.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
+sfml-window-s-d.lib(WindowImplWin32.obj) : warning LNK4099: "" PDB не найден с "sfml-window-s-d.lib(WindowImplWin32.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
+sfml-window-s-d.lib(WglContext.obj) : warning LNK4099: "" PDB не найден с "sfml-window-s-d.lib(WglContext.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
+sfml-system-s-d.lib(String.obj) : warning LNK4099: "" PDB не найден с "sfml-system-s-d.lib(String.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
   roguelike.vcxproj -> C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\x64\Debug\roguelike.exe
