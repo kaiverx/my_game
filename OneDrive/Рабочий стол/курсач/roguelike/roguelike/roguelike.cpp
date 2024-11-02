@@ -1,257 +1,200 @@
-﻿#include <SFML/Graphics.hpp> // Подключение библиотеки для работы с графикой
-#include <vector>            // Подключение библиотеки для работы с векторами
-#include <memory>            // Подключение библиотеки для работы с умными указателями
-#include <iostream>          // Подключение библиотеки для работы с выводом информации
+﻿#include <SFML/Graphics.hpp>
+#include <vector>
+#include <memory>
+#include <iostream>
 
 using namespace sf;
 using namespace std;
 
-// Размеры сетки и игрового поля
-const int TILE_SIZE = 50;         // Размер одной клетки
-const int GRID_WIDTH = 33;        // Количество клеток по ширине
-const int GRID_HEIGHT = 17;       // Количество клеток по высоте
+const int TILE_SIZE = 50;  // Размер одной клетки
+const int GRID_WIDTH = 33; // Ширина сетки в количестве клеток
+const int GRID_HEIGHT = 17; // Высота сетки в количестве клеток
 
-// Класс Enemy представляет врага в игре
-class Enemy {
+// Класс Tile представляет собой клетку игрового поля
+class Tile {
 public:
-    // Конструктор, инициализирующий врага на заданных координатах сетки
-    Enemy(int gridX, int gridY) {
-        // Создание формы врага
-        enemyShape.setSize(Vector2f(TILE_SIZE, TILE_SIZE));
-        enemyShape.setFillColor(Color::Blue); // Установка цвета врага
-        setPosition(gridX, gridY); // Установка позиции врага на сетке
-        maxHealth = 100; // Установка максимального здоровья
-        health = maxHealth; // Изначальное здоровье равно максимальному
-
-        // Инициализация полоски здоровья
-        healthBar.setSize(Vector2f(TILE_SIZE, 10.0f));
-        healthBar.setFillColor(Color::Red);
+    Tile(int x, int y) : isOccupied(false), hasEnemy(false), hasPlayer(false), hasItem(false), hasObstacle(false) {
+        tileShape.setSize(Vector2f(TILE_SIZE, TILE_SIZE)); // Устанавливаем размер клетки
+        tileShape.setOutlineThickness(1); // Толщина контура клетки
+        tileShape.setOutlineColor(Color::White); // Цвет контура клетки
+        tileShape.setFillColor(Color::Transparent); // Цвет заливки клетки (прозрачный)
+        tileShape.setPosition(x * TILE_SIZE, y * TILE_SIZE); // Позиционируем клетку на поле
     }
 
-    // Метод для установки позиции врага по координатам сетки
-    void setPosition(int gridX, int gridY) {
-        enemyShape.setPosition(gridX * TILE_SIZE, gridY * TILE_SIZE);
-        // Полоска здоровья располагается чуть ниже формы врага
-        healthBar.setPosition(enemyShape.getPosition().x, enemyShape.getPosition().y + TILE_SIZE + 5);
-    }
+    RectangleShape& getShape() { return tileShape; } // Возвращает ссылку на объект клетки для отрисовки
 
-    void moveTowardsPlayer(const RectangleShape& playerShape) {
-        float playerX = playerShape.getPosition().x;
-        float playerY = playerShape.getPosition().y;
-
-        float enemyX = enemyShape.getPosition().x;
-        float enemyY = enemyShape.getPosition().y;
-
-        if (enemyX < playerX) enemyX += 1.0f; // Перемещение вправо
-        if (enemyX > playerX) enemyX -= 1.0f; // Перемещение влево
-        if (enemyY < playerY) enemyY += 1.0f; // Перемещение вниз
-        if (enemyY > playerY) enemyY -= 1.0f; // Перемещение вверх
-
-        enemyShape.setPosition(enemyX, enemyY); // Установка новой позиции
-    }
-
-    // Методы доступа к форме и полоске здоровья врага
-    RectangleShape getShape() const { return enemyShape; }
-    RectangleShape getHealthBar() const { return healthBar; }
-
-    // Возвращает текущее здоровье врага
-    int getHealth() const { return health; }
-
-    // Метод для уменьшения здоровья врага
-    void takeDamage(int damage) { health -= damage; }
-
-    // Проверяет, жив ли враг
-    bool isAlive() const { return health > 0; }
-
-    // Обновление полоски здоровья врага
-    void updateHealthBar() {
-        // Вычисляем процент оставшегося здоровья
-        float healthPercentage = static_cast<float>(health) / maxHealth;
-        healthBar.setSize(Vector2f(TILE_SIZE * healthPercentage, 10.0f)); // Меняем ширину полоски здоровья
-        healthBar.setPosition(enemyShape.getPosition().x, enemyShape.getPosition().y + TILE_SIZE + 5); // Обновляем позицию полоски
-    }
+    bool isOccupied; // Флаг, указывающий, занята ли клетка
+    bool hasEnemy; // Флаг, указывающий, есть ли враг на клетке
+    bool hasPlayer; // Флаг, указывающий, есть ли игрок на клетке
+    bool hasItem; // Флаг, указывающий, есть ли предмет на клетке
+    bool hasObstacle; // Флаг, указывающий, есть ли препятствие на клетке
 
 private:
-    RectangleShape enemyShape; // Форма врага
-    RectangleShape healthBar;  // Полоска здоровья врага
-    int health;                // Текущее здоровье врага
-    int maxHealth;             // Максимальное здоровье врага
+    RectangleShape tileShape; // Графическое представление клетки
 };
 
-// Класс Game отвечает за основную логику игры
+// Класс Enemy представляет врага
+class Enemy {
+public:
+    Enemy(int gridX, int gridY) {
+        enemyShape.setSize(Vector2f(TILE_SIZE, TILE_SIZE)); // Устанавливаем размер врага
+        enemyShape.setFillColor(Color::Blue); // Устанавливаем цвет врага
+        setPosition(gridX, gridY); // Устанавливаем начальную позицию врага
+        maxHealth = 100; // Задаем максимальное здоровье
+        health = maxHealth; // Устанавливаем текущее здоровье
+
+        healthBar.setSize(Vector2f(TILE_SIZE, 10.0f)); // Размер полоски здоровья
+        healthBar.setFillColor(Color::Red); // Цвет полоски здоровья
+    }
+
+    void setPosition(int gridX, int gridY) {
+        enemyShape.setPosition(gridX * TILE_SIZE, gridY * TILE_SIZE); // Устанавливаем позицию врага
+        healthBar.setPosition(enemyShape.getPosition().x, enemyShape.getPosition().y + TILE_SIZE + 5); // Позиция полоски здоровья
+    }
+
+    RectangleShape getShape() const { return enemyShape; } // Возвращает форму врага для отрисовки
+    RectangleShape getHealthBar() const { return healthBar; } // Возвращает полоску здоровья для отрисовки
+    bool isAlive() const { return health > 0; } // Проверяет, жив ли враг
+
+private:
+    RectangleShape enemyShape; // Графическое представление врага
+    RectangleShape healthBar; // Полоска здоровья врага
+    int health; // Текущее здоровье
+    int maxHealth; // Максимальное здоровье
+};
+
+// Класс Game отвечает за весь игровой процесс
 class Game {
 public:
     Game() {
-        window.create(VideoMode(1920, 1080), "RPG Game"); // Создание игрового окна 1920x1080
-        window.setFramerateLimit(60); // Ограничение кадров для стабильности
+        window.create(VideoMode(1920, 1080), "RPG Game"); // Создаем окно игры
+        window.setFramerateLimit(60); // Устанавливаем ограничение по FPS
 
-        // Инициализация игрока
-        player.setSize(Vector2f(TILE_SIZE, TILE_SIZE));
-        player.setFillColor(Color::Green);
-        player.setPosition(2 * TILE_SIZE, 2 * TILE_SIZE); // Установка начальной позиции игрока
+        player.setSize(Vector2f(TILE_SIZE, TILE_SIZE)); // Устанавливаем размер игрока
+        player.setFillColor(Color::Green); // Устанавливаем цвет игрока
+        player.setPosition(2 * TILE_SIZE, 2 * TILE_SIZE); // Устанавливаем начальную позицию игрока
 
-        // Настройка круга здоровья игрока
-        playerHealthCircle.setRadius(70); // Радиус круга
-        playerHealthCircle.setFillColor(Color::Red);
-        playerHealthCircle.setOutlineThickness(5);
-        playerHealthCircle.setOutlineColor(Color::White);
-        playerHealthCircle.setPosition(305, 885); // Расположение круга здоровья
-        playerMaxHealth = 100;
-        playerHealth = 100;
+        playerHealthCircle.setRadius(70); // Радиус круга здоровья игрока
+        playerHealthCircle.setFillColor(Color::Red); // Цвет круга здоровья игрока
+        playerHealthCircle.setOutlineThickness(5); // Толщина контура круга здоровья
+        playerHealthCircle.setOutlineColor(Color::White); // Цвет контура круга здоровья
+        playerHealthCircle.setPosition(305, 885); // Позиция круга здоровья игрока
+        playerMaxHealth = 100; // Максимальное здоровье игрока
+        playerHealth = 100; // Текущее здоровье игрока
 
-        // Загрузка шрифта для отображения текста здоровья
-        if (!font.loadFromFile("Arial.ttf")) { // Проверка загрузки шрифта
+        // Загружаем шрифт для текста здоровья
+        if (!font.loadFromFile("Arial.ttf")) {
             cout << "Error loading font\n";
         }
 
-        // Настройка текста для отображения количества здоровья
-        playerHealthText.setFont(font);               // Присваиваем шрифт
-        playerHealthText.setCharacterSize(24);        // Размер текста
-        playerHealthText.setFillColor(Color::White);  // Цвет текста
-        playerHealthText.setStyle(Text::Bold);        // Стиль текста
-        playerHealthText.setPosition(320, 940);       // Позиция внутри круга здоровья
-        updateHealthText();                           // Устанавливаем начальное значение текста здоровья
+        playerHealthText.setFont(font); // Устанавливаем шрифт текста
+        playerHealthText.setCharacterSize(24); // Устанавливаем размер текста
+        playerHealthText.setFillColor(Color::White); // Цвет текста
+        playerHealthText.setStyle(Text::Bold); // Стиль текста
+        playerHealthText.setPosition(320, 940); // Позиция текста здоровья
+        updateHealthText(); // Обновляем текст здоровья
 
-        createMap(); // Создание начальных объектов на карте
+        createMap(); // Создаем карту игрового поля
 
-        // Создание квадрата для карты
-        mapShape.setSize(Vector2f(230, 230)); // Устанавливаем размер квадрата
-        mapShape.setFillColor(Color::White);  // Устанавливаем цвет квадрата
-        mapShape.setPosition(0, 850);         // Позиция квадрата (левый нижний угол)
+        mapShape.setSize(Vector2f(230, 230)); // Размер мини-карты
+        mapShape.setFillColor(Color::White); // Цвет мини-карты
+        mapShape.setPosition(0, 850); // Позиция мини-карты
     }
 
-    // Запуск игры
     void run() {
         while (window.isOpen()) {
-            handleEvents(); // Обработка событий
-            update();       // Обновление логики
-            render();       // Отрисовка объектов
+            handleEvents(); // Обрабатываем события
+            update(); // Обновляем состояние игры
+            render(); // Рендерим содержимое
         }
     }
 
 private:
-    RenderWindow window;        // Главное окно игры
-    RectangleShape player;      // Форма игрока
-    CircleShape playerHealthCircle; // Круг здоровья игрока
-    Text playerHealthText;      // Текст для отображения здоровья игрока
-    Font font;                  // Шрифт для текста
-    vector<unique_ptr<Enemy>> enemies; // Контейнер для врагов
-    bool canMove = true;        // Флаг для отслеживания возможности движения игрока
-    int playerMaxHealth;        // Максимальное здоровье игрока
-    int playerHealth;           // Текущее здоровье игрока
-    RectangleShape mapShape;    // Квадрат для карты
+    RenderWindow window; // Главное окно игры
+    RectangleShape player; // Игрок в виде прямоугольника
+    CircleShape playerHealthCircle; // Круг для отображения здоровья игрока
+    Text playerHealthText; // Текст для отображения здоровья игрока
+    Font font; // Шрифт для текста здоровья
+    vector<unique_ptr<Enemy>> enemies; // Вектор врагов
+    vector<vector<Tile>> grid; // Сетка клеток игрового поля
+    int playerMaxHealth; // Максимальное здоровье игрока
+    int playerHealth; // Текущее здоровье игрока
+    RectangleShape mapShape; // Мини-карта
 
-    // Создание врагов и объектов на карте
     void createMap() {
-        enemies.push_back(make_unique<Enemy>(12, 8)); // Создание врага на определенной позиции
+        grid.resize(GRID_HEIGHT, vector<Tile>(GRID_WIDTH, Tile(0, 0))); // Создаем сетку клеток
+        for (int y = 0; y < GRID_HEIGHT; y++) {
+            for (int x = 0; x < GRID_WIDTH; x++) {
+                grid[y][x] = Tile(x, y); // Инициализируем каждую клетку сетки
+            }
+        }
+
+        // Создаем врагов и помещаем их на сетку
+        enemies.push_back(make_unique<Enemy>(5, 5)); // Создаем врага на клетке (5, 5)
+        grid[5][5].isOccupied = true; // Устанавливаем флаг занятости клетки врагом
+        grid[5][5].hasEnemy = true; // Устанавливаем флаг наличия врага
     }
 
-    // Обработка событий окна
     void handleEvents() {
         Event event;
         while (window.pollEvent(event)) {
             if (event.type == Event::Closed) {
-                window.close(); // Закрытие окна
+                window.close();
+            }
+
+            // Перемещение игрока по нажатию клавиши
+            if (event.type == Event::KeyPressed) {
+                int newX = player.getPosition().x / TILE_SIZE; // Текущая позиция по X
+                int newY = player.getPosition().y / TILE_SIZE; // Текущая позиция по Y
+
+                // Проверяем направление движения и обновляем позицию
+                if (event.key.code == Keyboard::W && newY > 0 && !grid[newY - 1][newX].isOccupied) newY--;
+                if (event.key.code == Keyboard::S && newY < GRID_HEIGHT - 1 && !grid[newY + 1][newX].isOccupied) newY++;
+                if (event.key.code == Keyboard::A && newX > 0 && !grid[newY][newX - 1].isOccupied) newX--;
+                if (event.key.code == Keyboard::D && newX < GRID_WIDTH - 1 && !grid[newY][newX + 1].isOccupied) newX++;
+
+                // Обновляем позицию игрока
+                player.setPosition(newX * TILE_SIZE, newY * TILE_SIZE);
             }
         }
     }
 
-    // Обновление состояния игры
     void update() {
-        Vector2i moveDirection(0, 0); // Начальное направление движения
-
-        // Проверка нажатия клавиш для движения игрока
-        if (Keyboard::isKeyPressed(Keyboard::W)) moveDirection.y = -1;
-        if (Keyboard::isKeyPressed(Keyboard::S)) moveDirection.y = 1;
-        if (Keyboard::isKeyPressed(Keyboard::A)) moveDirection.x = -1;
-        if (Keyboard::isKeyPressed(Keyboard::D)) moveDirection.x = 1;
-
-        // Если есть движение и игрок может двигаться
-        if (moveDirection.x != 0 || moveDirection.y != 0) {
-            if (canMove) {
-                int newX = (player.getPosition().x / TILE_SIZE) + moveDirection.x;
-                int newY = (player.getPosition().y / TILE_SIZE) + moveDirection.y;
-
-                // Проверка границ сетки
-                if (newX >= 0 && newX < GRID_WIDTH && newY >= 0 && newY < GRID_HEIGHT) {
-                    player.setPosition(newX * TILE_SIZE, newY * TILE_SIZE); // Перемещение игрока
-                    canMove = false; // Запрещаем дальнейшее движение до отпускания клавиши
-                }
-            }
-        }
-        else {
-            canMove = true; // Разрешаем движение снова
-        }
-
-        // Обновление масштаба круга здоровья игрока
-        float playerHealthPercentage = static_cast<float>(playerHealth) / playerMaxHealth;
-        playerHealthCircle.setScale(playerHealthPercentage, playerHealthPercentage);
         updateHealthText(); // Обновляем текст здоровья
-
-        // Проверка атаки по врагам при нажатии на пробел
-        if (Keyboard::isKeyPressed(Keyboard::Space)) {
-            for (auto& enemy : enemies) {
-                // Если враг пересекается с игроком и еще жив
-                if (player.getGlobalBounds().intersects(enemy->getShape().getGlobalBounds()) && enemy->isAlive()) {
-                    enemy->takeDamage(20); // Наносим урон врагу
-                    enemy->updateHealthBar(); // Обновляем полоску здоровья врага
-                    if (!enemy->isAlive()) {
-                        cout << "Enemy defeated!" << endl; // Сообщение о смерти врага
-                        // Удаление мертвого врага из списка
-                        enemies.erase(remove_if(enemies.begin(), enemies.end(),
-                            [](const unique_ptr<Enemy>& e) { return !e->isAlive(); }),
-                            enemies.end());
-                    }
-                    break;
-                }
-            }
-        }
     }
 
-    // Обновление текста для отображения здоровья игрока
     void updateHealthText() {
-        // Устанавливаем формат "Текущее Здоровье / Максимальное Здоровье"
-        playerHealthText.setString(to_string(playerHealth) + " / " + to_string(playerMaxHealth));
+        playerHealthText.setString(to_string(playerHealth) + " / " + to_string(playerMaxHealth)); // Обновляем текст здоровья
     }
 
+    void render() {
+        window.clear(); // Очищаем окно
 
-    // Отрисовка объектов на экране
-     void render() {
-        window.clear(); // Очистка экрана
-
-        // Отрисовка сетки
-        for (int y = 0; y < GRID_HEIGHT; y++) {
-            for (int x = 0; x < GRID_WIDTH; x++) {
-                RectangleShape tile(Vector2f(TILE_SIZE, TILE_SIZE));
-                tile.setPosition(x * TILE_SIZE, y * TILE_SIZE);
-                tile.setFillColor(Color::Transparent);
-                tile.setOutlineThickness(1);
-                tile.setOutlineColor(Color::White);
-                window.draw(tile);
+        for (auto& row : grid) {
+            for (auto& tile : row) {
+                window.draw(tile.getShape()); // Рисуем каждую клетку на экране
             }
         }
 
-        // Отрисовка врагов и их полосок здоровья
+        // Рисуем врагов на экране
         for (auto& enemy : enemies) {
             if (enemy->isAlive()) {
-                window.draw(enemy->getShape());
-                window.draw(enemy->getHealthBar());
+                window.draw(enemy->getShape()); // Рисуем врага
+                window.draw(enemy->getHealthBar()); // Рисуем полоску здоровья врага
             }
         }
 
-        window.draw(player);               // Отрисовка игрока
-        window.draw(playerHealthCircle);   // Отрисовка круга здоровья игрока
-        window.draw(playerHealthText);     // Отрисовка текста количества здоровья игрока
+        window.draw(player); // Рисуем игрока
+        window.draw(playerHealthCircle); // Рисуем круг здоровья игрока
+        window.draw(playerHealthText); // Рисуем текст здоровья игрока
+        window.draw(mapShape); // Рисуем мини-карту
 
-        // Отрисовка квадрата для карты
-        window.draw(mapShape); // Отрисовка квадрата карты
-
-        window.display(); // Отображение содержимого окна
+        window.display(); // Отображаем содержимое окна
     }
 };
 
 int main() {
-    Game game; // Создание объекта игры
-    game.run(); // Запуск игры
-    return 0; // Завершение программы
+    Game game; // Создаем экземпляр игры
+    game.run(); // Запускаем игру
+    return 0; // Завершаем программу
 }
