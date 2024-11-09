@@ -40,6 +40,10 @@ private:
     void updateHealthText();
     void update();
     void render();
+
+    Text turnText; // Текст для отображения "Ваш ход"
+    bool showTurnText; // Флаг для управления видимостью текста
+    Clock turnTextTimer; // Таймер для отсчета времени отображения текста
 };
 
 #endif // GAME_H

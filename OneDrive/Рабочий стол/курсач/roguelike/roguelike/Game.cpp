@@ -120,20 +120,51 @@ void Game::endTurn() {
 
 void Game::enemyAction() {
     for (auto& enemy : enemies) {
-        if (enemy->isAlive()) {
-            // Логика действий врага
-            // Например, перемещение к игроку или атака
-            enemyMovesLeft--;
+        enemyMovesLeft = 4; // Устанавливаем максимальное количество ходов врага
+        Vector2f playerPos = player.getPosition();
+        Vector2f enemyPos = enemy->getShape().getPosition();
+
+        while (enemyMovesLeft > 0) {
+            Vector2f direction = playerPos - enemyPos;
+
+            if (std::abs(direction.x) > std::abs(direction.y)) {
+                // Двигаем по горизонтали
+                direction.x = (direction.x > 0) ? TILE_SIZE : -TILE_SIZE;
+                direction.y = 0;
+            }
+            else {
+                // Двигаем по вертикали
+                direction.y = (direction.y > 0) ? TILE_SIZE : -TILE_SIZE;
+                direction.x = 0;
+            }
+
+            Vector2f newEnemyPos = enemyPos + direction;
+            int newX = newEnemyPos.x / TILE_SIZE;
+            int newY = newEnemyPos.y / TILE_SIZE;
+
+            // Проверяем, что клетка свободна и находится в пределах сетки
+            if (newX >= 0 && newX < GRID_WIDTH && newY >= 0 && newY < GRID_HEIGHT && !grid[newY][newX].isOccupied) {
+                enemy->setPosition(newX, newY);
+                grid[static_cast<int>(enemyPos.y / TILE_SIZE)][static_cast<int>(enemyPos.x / TILE_SIZE)].hasEnemy = false;
+                grid[newY][newX].hasEnemy = true;
+                enemyPos = newEnemyPos;
+                enemyMovesLeft--;
+            }
+            else {
+                break; // Останавливаем движение, если ход невозможен
+            }
         }
     }
+    playerTurn = true; // Передача хода игроку
 }
+
 
 void Game::update() {
     updateHealthText();
 }
 
 void Game::updateHealthText() {
-    playerHealthText.setString("Health: " + to_string(playerHealth));
+    playerHealthText.setString(" " + to_string(playerHealth) + "/" + to_string(playerMaxHealth));
 }
 
 void Game::render() {
