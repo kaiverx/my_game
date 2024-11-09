@@ -50,6 +50,18 @@ Game::Game() : playerActionPoints(1), enemyActionPoints(1), maxMovesPerTurn(6) {
     playerMovesLeft = maxMovesPerTurn;
     enemyMovesLeft = maxMovesPerTurn;
     playerTurn = true;
+
+    // Настройка текста "Ваш ход"
+    turnText.setFont(font);
+    turnText.setString("YOUR TURN");
+    turnText.setCharacterSize(100);
+    turnText.setFillColor(Color::White);
+    turnText.setStyle(Text::Bold);
+
+    // Центрирование текста на игровом поле
+    FloatRect textRect = turnText.getLocalBounds();
+    turnText.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
+    turnText.setPosition(GRID_WIDTH * TILE_SIZE / 2.0f, GRID_HEIGHT * TILE_SIZE / 2.0f);
 }
 
 void Game::run() {
@@ -116,6 +128,10 @@ void Game::endTurn() {
     enemyAction();
     playerMovesLeft = maxMovesPerTurn;
     playerTurn = true;
+
+    // Отображение текста "Ваш ход" и сброс таймера
+    showTurnText = true;
+    turnTextTimer.restart();
 }
 
 void Game::enemyAction() {
@@ -161,7 +177,13 @@ void Game::enemyAction() {
 
 void Game::update() {
     updateHealthText();
+
+    // Проверка таймера для скрытия текста "Ваш ход"
+    if (showTurnText && turnTextTimer.getElapsedTime().asSeconds() > 1.0f) {
+        showTurnText = false; // Скрыть текст через 1 секунду
+    }
 }
+
 
 void Game::updateHealthText() {
     playerHealthText.setString(" " + to_string(playerHealth) + "/" + to_string(playerMaxHealth));
@@ -182,9 +204,16 @@ void Game::render() {
         window.draw(enemy->getShape());
         window.draw(enemy->getHealthBar());
     }
+
     window.draw(endTurnButton);
     window.draw(endTurnButtonText);
     window.draw(playerHealthCircle);
     window.draw(playerHealthText);
+
+    // Отображение текста "Ваш ход" по центру экрана
+    if (showTurnText) {
+        window.draw(turnText);
+    }
+
     window.display();
 }

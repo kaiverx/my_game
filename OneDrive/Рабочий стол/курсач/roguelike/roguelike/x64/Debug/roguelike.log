@@ -1,46 +1,34 @@
 ﻿  Game.cpp
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(93,26): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(93,26): warning C4244:         with
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(93,26): warning C4244:         [
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(93,26): warning C4244:             T=float
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(93,26): warning C4244:         ]
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(94,26): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(94,26): warning C4244:         with
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(94,26): warning C4244:         [
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(94,26): warning C4244:             T=float
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(94,26): warning C4244:         ]
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(97,56): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(97,45): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(132,44): warning C4244: =: преобразование "int" в "T", возможна потеря данных
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(132,44): warning C4244:         with
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(132,44): warning C4244:         [
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(132,44): warning C4244:             T=float
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(132,44): warning C4244:         ]
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(137,44): warning C4244: =: преобразование "int" в "T", возможна потеря данных
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(137,44): warning C4244:         with
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(137,44): warning C4244:         [
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(137,44): warning C4244:             T=float
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(137,44): warning C4244:         ]
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(142,22): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(142,22): warning C4244:         with
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(142,22): warning C4244:         [
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(142,22): warning C4244:             T=float
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(142,22): warning C4244:         ]
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(143,22): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(143,22): warning C4244:         with
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(143,22): warning C4244:         [
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(143,22): warning C4244:             T=float
-C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(143,22): warning C4244:         ]
-sfml-graphics-s-d.lib(Font.obj) : warning LNK4099: "" PDB не найден с "sfml-graphics-s-d.lib(Font.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
-sfml-graphics-s-d.lib(Image.obj) : warning LNK4099: "" PDB не найден с "sfml-graphics-s-d.lib(Image.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
-sfml-graphics-s-d.lib(ImageLoader.obj) : warning LNK4099: "" PDB не найден с "sfml-graphics-s-d.lib(ImageLoader.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
-sfml-graphics-s-d.lib(Shader.obj) : warning LNK4099: "" PDB не найден с "sfml-graphics-s-d.lib(Shader.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
-sfml-graphics-s-d.lib(Texture.obj) : warning LNK4099: "" PDB не найден с "sfml-graphics-s-d.lib(Texture.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
-sfml-graphics-s-d.lib(VertexArray.obj) : warning LNK4099: "" PDB не найден с "sfml-graphics-s-d.lib(VertexArray.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
-sfml-window-s-d.lib(Window.obj) : warning LNK4099: "" PDB не найден с "sfml-window-s-d.lib(Window.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
-sfml-window-s-d.lib(WindowBase.obj) : warning LNK4099: "" PDB не найден с "sfml-window-s-d.lib(WindowBase.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
-sfml-window-s-d.lib(JoystickImpl.obj) : warning LNK4099: "" PDB не найден с "sfml-window-s-d.lib(JoystickImpl.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
-sfml-window-s-d.lib(VulkanImplWin32.obj) : warning LNK4099: "" PDB не найден с "sfml-window-s-d.lib(VulkanImplWin32.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
-sfml-window-s-d.lib(WindowImplWin32.obj) : warning LNK4099: "" PDB не найден с "sfml-window-s-d.lib(WindowImplWin32.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
-sfml-window-s-d.lib(WglContext.obj) : warning LNK4099: "" PDB не найден с "sfml-window-s-d.lib(WglContext.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(105,26): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(105,26): warning C4244:         with
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(105,26): warning C4244:         [
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(105,26): warning C4244:             T=float
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(105,26): warning C4244:         ]
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(106,26): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(106,26): warning C4244:         with
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(106,26): warning C4244:         [
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(106,26): warning C4244:             T=float
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(106,26): warning C4244:         ]
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(109,56): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(109,45): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(148,44): warning C4244: =: преобразование "int" в "T", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(148,44): warning C4244:         with
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(148,44): warning C4244:         [
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(148,44): warning C4244:             T=float
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(148,44): warning C4244:         ]
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(153,44): warning C4244: =: преобразование "int" в "T", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(153,44): warning C4244:         with
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(153,44): warning C4244:         [
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(153,44): warning C4244:             T=float
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(153,44): warning C4244:         ]
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(158,22): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(158,22): warning C4244:         with
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(158,22): warning C4244:         [
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(158,22): warning C4244:             T=float
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(158,22): warning C4244:         ]
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(159,22): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(159,22): warning C4244:         with
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(159,22): warning C4244:         [
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(159,22): warning C4244:             T=float
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(159,22): warning C4244:         ]
   roguelike.vcxproj -> C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\x64\Debug\roguelike.exe
