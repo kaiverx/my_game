@@ -13,11 +13,14 @@ class Tile {
 public:
     RectangleShape shape;
     bool isOccupied;
-    bool hasEnemy;
+    bool hasEnemy;  // ѕроверка на то, есть ли враг на клетке
     bool isWall;
 
     Tile();
     Tile(int x, int y);
-};
 
+    bool isAvailableForMove() const { // ѕроверка на доступность клетки дл€ движени€
+        return !isWall && !hasEnemy;
+    }
+};
 #endif // TILE_H

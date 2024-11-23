@@ -1,5 +1,5 @@
 #include "Game.h"
-#include "iostream"
+#include <iostream>
 
 Game::Game() : playerActionPoints(1), enemyActionPoints(1), maxMovesPerTurn(6) {
     window.create(VideoMode(1920, 1080), "RPG Game");
@@ -18,7 +18,7 @@ Game::Game() : playerActionPoints(1), enemyActionPoints(1), maxMovesPerTurn(6) {
     playerHealth = 100;
 
     if (!font.loadFromFile("Arial.ttf")) {
-        cout << "Error loading font\n";
+        std::cout << "Error loading font\n";
     }
 
     playerHealthText.setFont(font);
@@ -41,6 +41,8 @@ Game::Game() : playerActionPoints(1), enemyActionPoints(1), maxMovesPerTurn(6) {
     endTurnButtonText.setFillColor(Color::White);
     endTurnButtonText.setPosition(1515, 940); // Позиция текста
 
+    attackDamage = 20; // Урон, наносимый игроком
+
     createMap();
 
     mapShape.setSize(Vector2f(230, 230));
@@ -62,6 +64,19 @@ Game::Game() : playerActionPoints(1), enemyActionPoints(1), maxMovesPerTurn(6) {
     FloatRect textRect = turnText.getLocalBounds();
     turnText.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
     turnText.setPosition(GRID_WIDTH * TILE_SIZE / 2.0f, GRID_HEIGHT * TILE_SIZE / 2.0f);
+
+    // Создаем кнопку для удара
+    attackButton.setRadius(40);
+    attackButton.setPosition(700, 500); // Позиция кнопки на экране
+    attackButton.setFillColor(Color::Red);
+    attackButtonText.setString("Attack");
+    attackButtonText.setFont(font);
+    attackButtonText.setCharacterSize(20);
+    attackButtonText.setFillColor(Color::White);
+    attackButtonText.setPosition(710, 510); // Центрируем текст на кнопке
+
+    isAttacking = false;  // По умолчанию атака не активна
+    canAttack = true;
 }
 
 void Game::run() {
@@ -102,14 +117,23 @@ void Game::handleEvents() {
             if (event.key.code == Keyboard::D) moveDirection.x = 1;
 
             if (moveDirection.x != 0 || moveDirection.y != 0) {
-                int newX = (player.getPosition().x / 50) + moveDirection.x; // TILE_SIZE
-                int newY = (player.getPosition().y / 50) + moveDirection.y; // TILE_SIZE
+                int newX = (player.getPosition().x / TILE_SIZE) + moveDirection.x;
+                int newY = (player.getPosition().y / TILE_SIZE) + moveDirection.y;
 
                 if (newX >= 0 && newX < GRID_WIDTH && newY >= 0 && newY < GRID_HEIGHT && !grid[newY][newX].isOccupied) {
-                    player.setPosition(newX * 50, newY * 50); // TILE_SIZE
+                    int oldX = player.getPosition().x / TILE_SIZE;
+                    int oldY = player.getPosition().y / TILE_SIZE;
+                    grid[oldY][oldX].isOccupied = false;
+
+                    player.setPosition(newX * TILE_SIZE, newY * TILE_SIZE);
                     playerMovesLeft--;
+                    grid[newY][newX].isOccupied = true;
                 }
             }
+        }
+
+        if (event.key.code == Keyboard::Space && playerTurn && canAttack) {
+            playerAttack();
         }
 
         if (event.type == Event::MouseButtonPressed) {
@@ -127,66 +151,59 @@ void Game::endTurn() {
     playerTurn = false;
     enemyAction();
     playerMovesLeft = maxMovesPerTurn;
+    canAttack = true;
     playerTurn = true;
 
-    // Отображение текста "Ваш ход" и сброс таймера
     showTurnText = true;
     turnTextTimer.restart();
 }
 
 void Game::enemyAction() {
+    sf::Vector2i playerPos(player.getPosition().x / TILE_SIZE, player.getPosition().y / TILE_SIZE);
+
     for (auto& enemy : enemies) {
-        enemyMovesLeft = 4; // Устанавливаем максимальное количество ходов врага
-        Vector2f playerPos = player.getPosition();
-        Vector2f enemyPos = enemy->getShape().getPosition();
+        if (enemy->isAlive()) {
+            sf::Vector2i enemyPos(enemy->getShape().getPosition().x / TILE_SIZE, enemy->getShape().getPosition().y / TILE_SIZE);
+            std::vector<sf::Vector2i> path = enemy->findPath(grid, enemyPos, playerPos);
 
-        while (enemyMovesLeft > 0) {
-            Vector2f direction = playerPos - enemyPos;
+            int moves = 0;
+            for (const auto& step : path) {
+                if (moves >= 4) break;
 
-            if (std::abs(direction.x) > std::abs(direction.y)) {
-                // Двигаем по горизонтали
-                direction.x = (direction.x > 0) ? TILE_SIZE : -TILE_SIZE;
-                direction.y = 0;
+                if (grid[step.y][step.x].isOccupied || grid[step.y][step.x].hasEnemy) {
+                    continue;
+                }
+
+                grid[enemyPos.y][enemyPos.x].hasEnemy = false;
+                grid[enemyPos.y][enemyPos.x].isOccupied = false;
+
+                enemy->setPosition(step.x, step.y);
+
+                grid[step.y][step.x].hasEnemy = true;
+                grid[step.y][step.x].isOccupied = true;
+
+                enemyPos = step;
+                moves++;
             }
-            else {
-                // Двигаем по вертикали
-                direction.y = (direction.y > 0) ? TILE_SIZE : -TILE_SIZE;
-                direction.x = 0;
-            }
 
-            Vector2f newEnemyPos = enemyPos + direction;
-            int newX = newEnemyPos.x / TILE_SIZE;
-            int newY = newEnemyPos.y / TILE_SIZE;
-
-            // Проверяем, что клетка свободна и находится в пределах сетки
-            if (newX >= 0 && newX < GRID_WIDTH && newY >= 0 && newY < GRID_HEIGHT && !grid[newY][newX].isOccupied) {
-                enemy->setPosition(newX, newY);
-                grid[static_cast<int>(enemyPos.y / TILE_SIZE)][static_cast<int>(enemyPos.x / TILE_SIZE)].hasEnemy = false;
-                grid[newY][newX].hasEnemy = true;
-                enemyPos = newEnemyPos;
-                enemyMovesLeft--;
-            }
-            else {
-                break; // Останавливаем движение, если ход невозможен
+            if (!enemy->isAlive()) {
+                grid[enemyPos.y][enemyPos.x].hasEnemy = false;
+                grid[enemyPos.y][enemyPos.x].isOccupied = false;
             }
         }
     }
-    playerTurn = true; // Передача хода игроку
 }
-
 
 void Game::update() {
     updateHealthText();
 
-    // Проверка таймера для скрытия текста "Ваш ход"
     if (showTurnText && turnTextTimer.getElapsedTime().asSeconds() > 1.0f) {
-        showTurnText = false; // Скрыть текст через 1 секунду
+        showTurnText = false;
     }
 }
 
-
 void Game::updateHealthText() {
-    playerHealthText.setString(" " + to_string(playerHealth) + "/" + to_string(playerMaxHealth));
+    playerHealthText.setString(" " + std::to_string(playerHealth) + "/" + std::to_string(playerMaxHealth));
 }
 
 void Game::render() {
@@ -210,10 +227,45 @@ void Game::render() {
     window.draw(playerHealthCircle);
     window.draw(playerHealthText);
 
-    // Отображение текста "Ваш ход" по центру экрана
     if (showTurnText) {
         window.draw(turnText);
     }
 
     window.display();
+}
+
+void Game::playerAttack() {
+    if (!canAttack) return;
+
+    int playerX = player.getPosition().x / TILE_SIZE;
+    int playerY = player.getPosition().y / TILE_SIZE;
+
+    // Используем итератор для безопасного удаления из вектора
+    for (auto it = enemies.begin(); it != enemies.end(); ) {
+        RectangleShape shape = (*it)->getShape();
+        int enemyX = shape.getPosition().x / TILE_SIZE;
+        int enemyY = shape.getPosition().y / TILE_SIZE;
+
+        if (abs(playerX - enemyX) <= 1 && abs(playerY - enemyY) <= 1) {
+            (*it)->takeDamage(attackDamage); // Наносим урон
+
+            if (!(*it)->isAlive()) { // Если враг умер
+                // Освобождаем клетку
+                grid[enemyY][enemyX].isOccupied = false;
+
+                // Удаляем врага из списка
+                it = enemies.erase(it);
+            }
+            else {
+                ++it; // Переходим к следующему врагу
+            }
+
+            break; // Прерываем, так как атака возможна только по одному врагу за ход
+        }
+        else {
+            ++it; // Переходим к следующему врагу
+        }
+    }
+
+    canAttack = false;
 }
