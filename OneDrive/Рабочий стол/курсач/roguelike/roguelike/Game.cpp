@@ -42,7 +42,34 @@ Game::Game() : playerActionPoints(1), enemyActionPoints(1), maxMovesPerTurn(6) {
     endTurnButtonText.setFillColor(Color::White);
     endTurnButtonText.setPosition(1515, 940); // Позиция текста
 
-    attackDamage = 20; // Урон, наносимый игроком
+    // Инициализация новых текстов
+    playerLVL.setFont(font);
+    playerLVL.setString("PLAYER LVL: 1");
+    playerLVL.setCharacterSize(16);
+    playerLVL.setStyle(Text::Bold);
+    playerLVL.setFillColor(Color::White);
+    playerLVL.setPosition(700, 900); // Позиция текста
+
+    playerDMG.setFont(font);
+    playerDMG.setString("DMG: 10");
+    playerDMG.setCharacterSize(16);
+    playerDMG.setStyle(Text::Bold);
+    playerDMG.setFillColor(Color::White);
+    playerDMG.setPosition(700, 980); // Позиция текста
+
+    playerHP.setFont(font);
+    playerHP.setString("HP: 100");
+    playerHP.setCharacterSize(16);
+    playerHP.setStyle(Text::Bold);
+    playerHP.setFillColor(Color::White);
+    playerHP.setPosition(700, 940); // Позиция текста
+
+    enemyLVL.setFont(font);
+    enemyLVL.setString("ENEMY LVL: 1");
+    enemyLVL.setCharacterSize(16);
+    enemyLVL.setStyle(sf::Text::Bold);
+    enemyLVL.setFillColor(sf::Color::White);
+    enemyLVL.setPosition(1725, 200);
 
     mageButton.setRadius(70);
     mageButton.setOutlineThickness(5);
@@ -80,6 +107,7 @@ Game::Game() : playerActionPoints(1), enemyActionPoints(1), maxMovesPerTurn(6) {
 
     isAttacking = false;  // По умолчанию атака не активна
     canAttack = true;
+    enemyLvlCount = 1;
 }
 
 void Game::highlightAttackArea() {
@@ -369,13 +397,31 @@ void Game::enemyAction() {
     // Если все враги побеждены, повышаем уровень игрока и спавним новых врагов
     if (allEnemiesDefeated) {
         player->levelUp();
-        spawnEnemies(4);
+        spawnEnemies(1);    
     }
 }
 
 void Game::spawnEnemies(int count) {
     enemies.clear();  // Очищаем старых врагов
+    enemyLvlCount += 1;
+    if (enemyLvlCount % 5 == 0) {
+        // Спавним врага в случайной позиции
+        int x = rand() % GRID_WIDTH;
+        int y = rand() % GRID_HEIGHT;
 
+        // Убедимся, что клетка не занята
+        while (grid[y][x].isOccupied || grid[y][x].hasEnemy) {
+            x = rand() % GRID_WIDTH;
+            y = rand() % GRID_HEIGHT;
+        }
+
+        // Создаем нового врага и добавляем в список
+        auto enemy = std::make_shared<Enemy>(5, 5, 1, true);  // Создаем босса с уровнем 1
+        enemy->levelUp();  // Увеличиваем уровень босса, если нужно
+        enemies.push_back(enemy);
+        grid[y][x].hasEnemy = true;
+        grid[y][x].isOccupied = true;
+    }
     for (int i = 0; i < count; ++i) {
         // Спавним врага в случайной позиции
         int x = rand() % GRID_WIDTH;
@@ -388,11 +434,12 @@ void Game::spawnEnemies(int count) {
         }
 
         // Создаем нового врага и добавляем в список
-        auto enemy = make_shared<Enemy>(x, y, 1);  // Пример создания врага
+        auto enemy = make_shared<Enemy>(x, y, enemyLvlCount);  // Пример создания врага
         enemies.push_back(enemy);
         grid[y][x].hasEnemy = true;
         grid[y][x].isOccupied = true;
-    }
+    } 
+    updateEnemyLvlText();
 }
 
 void Game::onEnemyDefeated(std::shared_ptr<Enemy>& enemy) {
@@ -403,9 +450,23 @@ void Game::onEnemyDefeated(std::shared_ptr<Enemy>& enemy) {
 
 void Game::update() {
     updateHealthText();
-
+   if (player != nullptr) {
+        playerLVL.setString("PLAYER LVL: " + std::to_string(player->getLevel()));
+        playerDMG.setString("DMG: " + std::to_string(player->getAttackPower()));
+        playerHP.setString("HP: " + std::to_string(player->getHealth()));
+    }
     if (showTurnText && turnTextTimer.getElapsedTime().asSeconds() > 1.0f) {
         showTurnText = false;
+    }
+    // Создание босса, если игрок прошел 5 уровней
+    if (player != nullptr && player->getLevel() % 5 == 0 && !boss) {
+        boss = std::make_shared<Enemy>(5, 5, 1, true);  // Создаем босса с уровнем 1
+        boss->levelUp();  // Увеличиваем уровень босса, если нужно
+    }
+
+    // Если босс существует, обновляем его уровень
+    if (boss != nullptr) {
+        boss->levelUp();
     }
 }
 
@@ -413,6 +474,9 @@ void Game::updateHealthText() {
     if (player != nullptr) {
         playerHealthText.setString(" " + std::to_string(player->getHealth()) + "/" + std::to_string(player->getMaxHealth()));
     }
+}
+void Game::updateEnemyLvlText() {
+    enemyLVL.setString("ENEMY LVL: " + std::to_string(enemyLvlCount));
 }
 
 void Game::render() {
@@ -447,6 +511,11 @@ void Game::render() {
     window.draw(endTurnButtonText);
     window.draw(playerHealthCircle);
     window.draw(playerHealthText);
+    // Отрисовываем новые текстовые объекты
+    window.draw(playerLVL); // Уровень игрока
+    window.draw(playerDMG); // Урон игрока
+    window.draw(playerHP);  // Текущее здоровье игрока
+    window.draw(enemyLVL);
 
     window.draw(mageButton);
     window.draw(warriorButton);
@@ -466,10 +535,12 @@ void Game::playerAttack() {
     int attackRadiusX = player->getAttackRangeX();  // Радиус атаки по оси X
     int attackRadiusY = player->getAttackRangeY();  // Радиус атаки по оси Y
 
+    int attackDamage = player->getAttackDamage();
+
     // В зависимости от направления атаки
     if (attackDirectionX == 1 && attackDirectionY == 0) {  // Горизонтальная атака вправо
-        for (int i = 1; i <= attackRadiusX; ++i) {  // Создаём клетки по горизонтали
-            for (int j = -attackRadiusY / 2; j <= attackRadiusY / 2; ++j) {  // Создаём клетки по вертикали
+        for (int i = 1; i <= attackRadiusX; ++i) {  // Смещаем по оси X
+            for (int j = -attackRadiusY / 2; j <= attackRadiusY / 2; ++j) {  // По оси Y
                 int targetX = (playerPos.x / TILE_SIZE) + i;  // Смещаем по X
                 int targetY = (playerPos.y / TILE_SIZE) + j;  // Смещаем по Y
                 if (targetX >= 0 && targetX < GRID_WIDTH && targetY >= 0 && targetY < GRID_HEIGHT) {
@@ -482,16 +553,16 @@ void Game::playerAttack() {
                                 enemy->takeDamage(attackDamage);
                                 // Удаление врага, если он мертв
                                 if (!enemy->isAlive()) {
-                                    grid[targetY][targetX].hasEnemy = false;  // Освобождаем клетку
-                                    grid[targetY][targetX].isOccupied = false;  // Если есть флаг занятости
-                                    it = enemies.erase(it);  // Удаляем врага из списка и получаем новый итератор
+                                    grid[targetY][targetX].hasEnemy = false;
+                                    grid[targetY][targetX].isOccupied = false;
+                                    it = enemies.erase(it);  // Удаляем врага из списка
                                 }
                                 else {
-                                    ++it;  // Если враг жив, продолжаем обход списка
+                                    ++it;
                                 }
                             }
                             else {
-                                ++it;  // Враг не нацелился, продолжаем обход
+                                ++it;
                             }
                         }
                     }
@@ -500,8 +571,8 @@ void Game::playerAttack() {
         }
     }
     else if (attackDirectionX == 0 && attackDirectionY == 1) {  // Вертикальная атака вниз
-        for (int i = -attackRadiusX / 2; i <= attackRadiusX / 2; ++i) {  // Создаём клетки по горизонтали
-            for (int j = 1; j <= attackRadiusY; ++j) {  // Создаём клетки по вертикали
+        for (int i = -attackRadiusY / 2; i <= attackRadiusY / 2; ++i) {  // По оси X
+            for (int j = 1; j <= attackRadiusX; ++j) {  // По оси Y
                 int targetX = (playerPos.x / TILE_SIZE) + i;  // Смещаем по X
                 int targetY = (playerPos.y / TILE_SIZE) + j;  // Смещаем по Y
                 if (targetX >= 0 && targetX < GRID_WIDTH && targetY >= 0 && targetY < GRID_HEIGHT) {
@@ -514,16 +585,16 @@ void Game::playerAttack() {
                                 enemy->takeDamage(attackDamage);
                                 // Удаление врага, если он мертв
                                 if (!enemy->isAlive()) {
-                                    grid[targetY][targetX].hasEnemy = false;  // Освобождаем клетку
-                                    grid[targetY][targetX].isOccupied = false;  // Если есть флаг занятости
-                                    it = enemies.erase(it);  // Удаляем врага из списка и получаем новый итератор
+                                    grid[targetY][targetX].hasEnemy = false;
+                                    grid[targetY][targetX].isOccupied = false;
+                                    it = enemies.erase(it);  // Удаляем врага из списка
                                 }
                                 else {
-                                    ++it;  // Если враг жив, продолжаем обход списка
+                                    ++it;
                                 }
                             }
                             else {
-                                ++it;  // Враг не нацелился, продолжаем обход
+                                ++it;
                             }
                         }
                     }
@@ -532,8 +603,8 @@ void Game::playerAttack() {
         }
     }
     else if (attackDirectionX == -1 && attackDirectionY == 0) {  // Атака влево
-        for (int i = 1; i <= attackRadiusX; ++i) {  // Создаём клетки по горизонтали
-            for (int j = -attackRadiusY / 2; j <= attackRadiusY / 2; ++j) {  // Создаём клетки по вертикали
+        for (int i = 1; i <= attackRadiusX; ++i) {  // Смещаем по оси X
+            for (int j = -attackRadiusY / 2; j <= attackRadiusY / 2; ++j) {  // По оси Y
                 int targetX = (playerPos.x / TILE_SIZE) - i;  // Смещаем по X
                 int targetY = (playerPos.y / TILE_SIZE) + j;  // Смещаем по Y
                 if (targetX >= 0 && targetX < GRID_WIDTH && targetY >= 0 && targetY < GRID_HEIGHT) {
@@ -546,16 +617,16 @@ void Game::playerAttack() {
                                 enemy->takeDamage(attackDamage);
                                 // Удаление врага, если он мертв
                                 if (!enemy->isAlive()) {
-                                    grid[targetY][targetX].hasEnemy = false;  // Освобождаем клетку
-                                    grid[targetY][targetX].isOccupied = false;  // Если есть флаг занятости
-                                    it = enemies.erase(it);  // Удаляем врага из списка и получаем новый итератор
+                                    grid[targetY][targetX].hasEnemy = false;
+                                    grid[targetY][targetX].isOccupied = false;
+                                    it = enemies.erase(it);  // Удаляем врага из списка
                                 }
                                 else {
-                                    ++it;  // Если враг жив, продолжаем обход списка
+                                    ++it;
                                 }
                             }
                             else {
-                                ++it;  // Враг не нацелился, продолжаем обход
+                                ++it;
                             }
                         }
                     }
@@ -564,8 +635,8 @@ void Game::playerAttack() {
         }
     }
     else if (attackDirectionX == 0 && attackDirectionY == -1) {  // Атака вверх
-        for (int i = -attackRadiusX / 2; i <= attackRadiusX / 2; ++i) {  // Создаём клетки по горизонтали
-            for (int j = 1; j <= attackRadiusY; ++j) {  // Создаём клетки по вертикали
+        for (int i = -attackRadiusY / 2; i <= attackRadiusY / 2; ++i) {  // По оси X
+            for (int j = 1; j <= attackRadiusX; ++j) {  // По оси Y
                 int targetX = (playerPos.x / TILE_SIZE) + i;  // Смещаем по X
                 int targetY = (playerPos.y / TILE_SIZE) - j;  // Смещаем по Y
                 if (targetX >= 0 && targetX < GRID_WIDTH && targetY >= 0 && targetY < GRID_HEIGHT) {
@@ -578,16 +649,16 @@ void Game::playerAttack() {
                                 enemy->takeDamage(attackDamage);
                                 // Удаление врага, если он мертв
                                 if (!enemy->isAlive()) {
-                                    grid[targetY][targetX].hasEnemy = false;  // Освобождаем клетку
-                                    grid[targetY][targetX].isOccupied = false;  // Если есть флаг занятости
-                                    it = enemies.erase(it);  // Удаляем врага из списка и получаем новый итератор
+                                    grid[targetY][targetX].hasEnemy = false;
+                                    grid[targetY][targetX].isOccupied = false;
+                                    it = enemies.erase(it);  // Удаляем врага из списка
                                 }
                                 else {
-                                    ++it;  // Если враг жив, продолжаем обход списка
+                                    ++it;
                                 }
                             }
                             else {
-                                ++it;  // Враг не нацелился, продолжаем обход
+                                ++it;
                             }
                         }
                     }
@@ -596,7 +667,3 @@ void Game::playerAttack() {
         }
     }
 }
-
-
-
-

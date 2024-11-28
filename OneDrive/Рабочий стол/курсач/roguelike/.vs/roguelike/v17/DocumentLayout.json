@@ -7,20 +7,32 @@
       "RelativeMoniker": "D:0:0:{A38C6838-29F9-4408-90E2-0D517894EB88}|roguelike\\roguelike.vcxproj|solutionrelative:roguelike\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A38C6838-29F9-4408-90E2-0D517894EB88}|roguelike\\roguelike.vcxproj|C:\\Users\\Dmitry\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\\u043A\u0443\u0440\u0441\u0430\u0447\\roguelike\\roguelike\\Character.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A38C6838-29F9-4408-90E2-0D517894EB88}|roguelike\\roguelike.vcxproj|solutionrelative:roguelike\\Character.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A38C6838-29F9-4408-90E2-0D517894EB88}|roguelike\\roguelike.vcxproj|C:\\Users\\Dmitry\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\\u043A\u0443\u0440\u0441\u0430\u0447\\roguelike\\roguelike\\Enemy.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A38C6838-29F9-4408-90E2-0D517894EB88}|roguelike\\roguelike.vcxproj|solutionrelative:roguelike\\Enemy.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A38C6838-29F9-4408-90E2-0D517894EB88}|roguelike\\roguelike.vcxproj|C:\\Users\\Dmitry\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\\u043A\u0443\u0440\u0441\u0430\u0447\\roguelike\\roguelike\\Character.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A38C6838-29F9-4408-90E2-0D517894EB88}|roguelike\\roguelike.vcxproj|solutionrelative:roguelike\\Character.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A38C6838-29F9-4408-90E2-0D517894EB88}|roguelike\\roguelike.vcxproj|C:\\Users\\Dmitry\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\\u043A\u0443\u0440\u0441\u0430\u0447\\roguelike\\roguelike\\Warrior.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A38C6838-29F9-4408-90E2-0D517894EB88}|roguelike\\roguelike.vcxproj|solutionrelative:roguelike\\Warrior.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A38C6838-29F9-4408-90E2-0D517894EB88}|roguelike\\roguelike.vcxproj|C:\\Users\\Dmitry\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\\u043A\u0443\u0440\u0441\u0430\u0447\\roguelike\\roguelike\\Level.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A38C6838-29F9-4408-90E2-0D517894EB88}|roguelike\\roguelike.vcxproj|solutionrelative:roguelike\\Level.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A38C6838-29F9-4408-90E2-0D517894EB88}|roguelike\\roguelike.vcxproj|C:\\Users\\Dmitry\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\\u043A\u0443\u0440\u0441\u0430\u0447\\roguelike\\roguelike\\Enemy.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A38C6838-29F9-4408-90E2-0D517894EB88}|roguelike\\roguelike.vcxproj|solutionrelative:roguelike\\Enemy.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A38C6838-29F9-4408-90E2-0D517894EB88}|roguelike\\roguelike.vcxproj|C:\\Users\\Dmitry\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\\u043A\u0443\u0440\u0441\u0430\u0447\\roguelike\\roguelike\\Mage.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{A38C6838-29F9-4408-90E2-0D517894EB88}|roguelike\\roguelike.vcxproj|solutionrelative:roguelike\\Mage.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A38C6838-29F9-4408-90E2-0D517894EB88}|roguelike\\roguelike.vcxproj|C:\\Users\\Dmitry\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\\u043A\u0443\u0440\u0441\u0430\u0447\\roguelike\\roguelike\\Enemy.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A38C6838-29F9-4408-90E2-0D517894EB88}|roguelike\\roguelike.vcxproj|solutionrelative:roguelike\\Enemy.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A38C6838-29F9-4408-90E2-0D517894EB88}|roguelike\\roguelike.vcxproj|C:\\Users\\Dmitry\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\\u043A\u0443\u0440\u0441\u0430\u0447\\roguelike\\roguelike\\Character.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A38C6838-29F9-4408-90E2-0D517894EB88}|roguelike\\roguelike.vcxproj|solutionrelative:roguelike\\Character.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A38C6838-29F9-4408-90E2-0D517894EB88}|roguelike\\roguelike.vcxproj|C:\\Users\\Dmitry\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\\u043A\u0443\u0440\u0441\u0430\u0447\\roguelike\\roguelike\\Character.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A38C6838-29F9-4408-90E2-0D517894EB88}|roguelike\\roguelike.vcxproj|solutionrelative:roguelike\\Character.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A38C6838-29F9-4408-90E2-0D517894EB88}|roguelike\\roguelike.vcxproj|C:\\Users\\Dmitry\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\\u043A\u0443\u0440\u0441\u0430\u0447\\roguelike\\roguelike\\Level.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -29,18 +41,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{A38C6838-29F9-4408-90E2-0D517894EB88}|roguelike\\roguelike.vcxproj|C:\\Users\\Dmitry\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\\u043A\u0443\u0440\u0441\u0430\u0447\\roguelike\\roguelike\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{A38C6838-29F9-4408-90E2-0D517894EB88}|roguelike\\roguelike.vcxproj|solutionrelative:roguelike\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A38C6838-29F9-4408-90E2-0D517894EB88}|roguelike\\roguelike.vcxproj|C:\\Users\\Dmitry\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\\u043A\u0443\u0440\u0441\u0430\u0447\\roguelike\\roguelike\\Level.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A38C6838-29F9-4408-90E2-0D517894EB88}|roguelike\\roguelike.vcxproj|solutionrelative:roguelike\\Level.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A38C6838-29F9-4408-90E2-0D517894EB88}|roguelike\\roguelike.vcxproj|C:\\Users\\Dmitry\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\\u043A\u0443\u0440\u0441\u0430\u0447\\roguelike\\roguelike\\Enemy.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A38C6838-29F9-4408-90E2-0D517894EB88}|roguelike\\roguelike.vcxproj|solutionrelative:roguelike\\Enemy.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A38C6838-29F9-4408-90E2-0D517894EB88}|roguelike\\roguelike.vcxproj|C:\\Users\\Dmitry\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\\u043A\u0443\u0440\u0441\u0430\u0447\\roguelike\\roguelike\\Warrior.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A38C6838-29F9-4408-90E2-0D517894EB88}|roguelike\\roguelike.vcxproj|solutionrelative:roguelike\\Warrior.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A38C6838-29F9-4408-90E2-0D517894EB88}|roguelike\\roguelike.vcxproj|C:\\Users\\Dmitry\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\\u043A\u0443\u0440\u0441\u0430\u0447\\roguelike\\roguelike\\Tile.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -89,7 +89,7 @@
               "RelativeDocumentMoniker": "roguelike\\Game.cpp",
               "ToolTip": "C:\\Users\\Dmitry\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\\u043A\u0443\u0440\u0441\u0430\u0447\\roguelike\\roguelike\\Game.cpp",
               "RelativeToolTip": "roguelike\\Game.cpp",
-              "ViewState": "AQIAACcAAAAAAAAAAAAAAE8CAAAZAAAA",
+              "ViewState": "AQIAADUCAAAAAAAAAAAAAJwCAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-11-04T07:45:57.583Z",
               "IsPinned": true,
@@ -97,13 +97,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "Game.h",
               "DocumentMoniker": "C:\\Users\\Dmitry\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\\u043A\u0443\u0440\u0441\u0430\u0447\\roguelike\\roguelike\\Game.h",
               "RelativeDocumentMoniker": "roguelike\\Game.h",
               "ToolTip": "C:\\Users\\Dmitry\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\\u043A\u0443\u0440\u0441\u0430\u0447\\roguelike\\roguelike\\Game.h",
               "RelativeToolTip": "roguelike\\Game.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAASAAAA",
+              "ViewState": "AQIAAFEAAAAAAAAAAAAAAF0AAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-11-04T07:44:31.925Z",
               "IsPinned": true,
@@ -119,52 +119,52 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "Level.cpp",
               "DocumentMoniker": "C:\\Users\\Dmitry\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\\u043A\u0443\u0440\u0441\u0430\u0447\\roguelike\\roguelike\\Level.cpp",
               "RelativeDocumentMoniker": "roguelike\\Level.cpp",
               "ToolTip": "C:\\Users\\Dmitry\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\\u043A\u0443\u0440\u0441\u0430\u0447\\roguelike\\roguelike\\Level.cpp",
               "RelativeToolTip": "roguelike\\Level.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACMAAAAAAAAA",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAACMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-11-28T13:44:17.373Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
               "Title": "Character.cpp",
               "DocumentMoniker": "C:\\Users\\Dmitry\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\\u043A\u0443\u0440\u0441\u0430\u0447\\roguelike\\roguelike\\Character.cpp",
               "RelativeDocumentMoniker": "roguelike\\Character.cpp",
               "ToolTip": "C:\\Users\\Dmitry\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\\u043A\u0443\u0440\u0441\u0430\u0447\\roguelike\\roguelike\\Character.cpp",
               "RelativeToolTip": "roguelike\\Character.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACUAAAAUAAAA",
+              "ViewState": "AQIAABsAAAAAAAAAAAAAACUAAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-11-26T04:25:20.817Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "Character.h",
               "DocumentMoniker": "C:\\Users\\Dmitry\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\\u043A\u0443\u0440\u0441\u0430\u0447\\roguelike\\roguelike\\Character.h",
               "RelativeDocumentMoniker": "roguelike\\Character.h",
               "ToolTip": "C:\\Users\\Dmitry\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\\u043A\u0443\u0440\u0441\u0430\u0447\\roguelike\\roguelike\\Character.h",
               "RelativeToolTip": "roguelike\\Character.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAcAAAA",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAACUAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-11-26T04:13:23.52Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Mage.h",
               "DocumentMoniker": "C:\\Users\\Dmitry\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\\u043A\u0443\u0440\u0441\u0430\u0447\\roguelike\\roguelike\\Mage.h",
               "RelativeDocumentMoniker": "roguelike\\Mage.h",
               "ToolTip": "C:\\Users\\Dmitry\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\\u043A\u0443\u0440\u0441\u0430\u0447\\roguelike\\roguelike\\Mage.h",
               "RelativeToolTip": "roguelike\\Mage.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAeAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-11-26T04:12:16.198Z",
               "EditorCaption": ""
@@ -177,14 +177,14 @@
               "RelativeDocumentMoniker": "roguelike\\Enemy.cpp",
               "ToolTip": "C:\\Users\\Dmitry\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\\u043A\u0443\u0440\u0441\u0430\u0447\\roguelike\\roguelike\\Enemy.cpp",
               "RelativeToolTip": "roguelike\\Enemy.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAC4AAAAAAAAA",
+              "ViewState": "AQIAAHgAAAAAAAAAAAAAAAwAAAAtAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-11-04T07:45:43.135Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 3,
               "Title": "Level.h",
               "DocumentMoniker": "C:\\Users\\Dmitry\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\\u043A\u0443\u0440\u0441\u0430\u0447\\roguelike\\roguelike\\Level.h",
               "RelativeDocumentMoniker": "roguelike\\Level.h",
@@ -197,26 +197,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 2,
               "Title": "Warrior.h",
               "DocumentMoniker": "C:\\Users\\Dmitry\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\\u043A\u0443\u0440\u0441\u0430\u0447\\roguelike\\roguelike\\Warrior.h",
               "RelativeDocumentMoniker": "roguelike\\Warrior.h",
               "ToolTip": "C:\\Users\\Dmitry\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\\u043A\u0443\u0440\u0441\u0430\u0447\\roguelike\\roguelike\\Warrior.h",
               "RelativeToolTip": "roguelike\\Warrior.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAGAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAzAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-11-26T04:11:58.705Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 1,
               "Title": "Enemy.h",
               "DocumentMoniker": "C:\\Users\\Dmitry\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\\u043A\u0443\u0440\u0441\u0430\u0447\\roguelike\\roguelike\\Enemy.h",
               "RelativeDocumentMoniker": "roguelike\\Enemy.h",
               "ToolTip": "C:\\Users\\Dmitry\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\\u043A\u0443\u0440\u0441\u0430\u0447\\roguelike\\roguelike\\Enemy.h",
               "RelativeToolTip": "roguelike\\Enemy.h",
-              "ViewState": "AQIAACkAAAAAAAAAAAAQwCUAAAATAAAA",
+              "ViewState": "AQIAAEEAAAAAAAAAAAAAAA4AAAA/AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-11-04T07:33:51.483Z",
               "EditorCaption": ""
@@ -231,8 +231,7 @@
               "RelativeToolTip": "roguelike\\Tile.cpp",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAACAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-11-04T07:45:14.019Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-04T07:45:14.019Z"
             },
             {
               "$type": "Document",

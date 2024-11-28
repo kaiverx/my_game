@@ -37,12 +37,18 @@ private:
     Text turnText;                   // Текст "Ваш ход"
     bool showTurnText;               // Флаг показа текста "Ваш ход"
     Clock turnTextTimer;             // Таймер для текста "Ваш ход"
+    Text playerLVL;
+    Text playerDMG;
+    Text playerHP;
+    Text enemyLVL;
 
     // Карта и игровые элементы
     vector<vector<Tile>> grid;       // Игровая сетка (карта)
     RectangleShape mapShape;         // Общая форма карты
     vector<shared_ptr<Enemy>> enemies; // Враги на карте
     vector<RectangleShape> healthBars; // Полоски здоровья врагов
+    int playerLevel;          // Уровень игрока
+    int playerAttackPower;    // Сила атаки игрока
 
     // Механики боя и хода
     int attackDamage;               // Урон игрока
@@ -70,6 +76,7 @@ private:
 
     // Вспомогательные флаги
     bool isAttacking;               // Флаг режима атаки
+    int enemyLvlCount;
 
     // Приватные методы
     void createMap();               // Генерация карты
@@ -84,6 +91,11 @@ private:
     void highlightAttackArea();     // Подсветка области атаки
     void spawnEnemies(int count);
     void onEnemyDefeated(std::shared_ptr<Enemy>& enemy);
+    void updateEnemyLvlText();
+
+    Enemy* enemy;
+
+    std::shared_ptr<Enemy> boss;  // Умный указатель на босса
 };
 
 #endif // GAME_H

@@ -35,7 +35,7 @@ bool Character::isAlive() const {
 void Character::levelUp() {
     level++;  // Увеличиваем уровень
     maxHealth += 20;  // Увеличиваем максимальное здоровье
-    attackPower += 100;  // Увеличиваем силу атаки
+    attackPower += 10;  // Увеличиваем силу атаки
 
     health = maxHealth;  // Восстанавливаем здоровье до максимума
 

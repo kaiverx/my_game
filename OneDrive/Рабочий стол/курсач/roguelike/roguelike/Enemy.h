@@ -12,7 +12,7 @@ using namespace sf;
 class Enemy {
 public:
     // Конструктор врага
-    Enemy(int gridX, int gridY, int level = 1);
+    Enemy(int gridX, int gridY, int level, bool isBoss = false);
 
     // Установка позиции врага
     void setPosition(int gridX, int gridY);
@@ -37,6 +37,8 @@ public:
 
     void levelUp();
 
+    void updateEnemyLevel();
+
     // Поиск пути (A*)
     std::vector<Vector2i> findPath(const std::vector<std::vector<Tile>>& grid, Vector2i start, Vector2i goal);
 
@@ -45,6 +47,7 @@ private:
     int maxHealth;          // Максимальное здоровье врага
     int attackPower;        // Сила атаки врага
     int level;              // Уровень врага
+    bool isBoss;
     RectangleShape enemyShape; // Форма врага
     RectangleShape healthBar;  // Полоска здоровья
 

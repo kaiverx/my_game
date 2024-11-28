@@ -5,13 +5,21 @@
 #include <unordered_map>
 
 // Конструктор врага
-Enemy::Enemy(int gridX, int gridY, int level) {
+Enemy::Enemy(int gridX, int gridY, int level, bool isBoss) {
     this->level = level;  // Устанавливаем уровень
-    enemyShape.setSize(Vector2f(50, 50)); // Размер врага
-    enemyShape.setFillColor(Color::Blue); // Цвет врага
-    setPosition(gridX, gridY);            // Установка позиции врага
-    calculateStats();                      // Вычисляем здоровье и силу атаки
-
+    this->isBoss = isBoss;
+    if (isBoss) {
+        enemyShape.setSize(Vector2f(50, 50)); // Размер босса в 4 клетки
+        enemyShape.setFillColor(Color::Yellow);     // Цвет босса
+        setPosition(gridX, gridY);            // Установка позиции врага
+        calculateStats();
+    }
+    else {
+        enemyShape.setSize(Vector2f(50, 50)); // Размер врага
+        enemyShape.setFillColor(Color::Blue); // Цвет врага
+        setPosition(gridX, gridY);            // Установка позиции врага
+        calculateStats();                      // Вычисляем здоровье и силу атаки
+    }
     // Настройка полоски здоровья
     healthBar.setSize(Vector2f(50, 10));
     healthBar.setFillColor(Color::Red);
@@ -20,11 +28,15 @@ Enemy::Enemy(int gridX, int gridY, int level) {
 
 // Метод для вычисления здоровья и силы атаки на основе уровня
 void Enemy::calculateStats() {
-    maxHealth = 100 + (level - 1) * 10;  // Каждое увеличение уровня дает +10 к здоровью
-    attackPower = 10 + (level - 1) * 1;   // Каждое увеличение уровня дает +1 к силе атаки
+    if (isBoss) {
+        maxHealth = 500 + (level - 1) * 100;  // Босс начинается с 500 здоровья, увеличивается на 100 за уровень
+        attackPower = 50 + (level - 1) * 10;  // Босс начинает с 50 урона, увеличивается на 10 за уровень
+    }
+    else {
+        maxHealth = 100 + (level - 1) * 10;   // Обычные враги
+        attackPower = 10 + (level - 1) * 1;
+    }
     health = maxHealth;                   // Текущее здоровье врага всегда равно максимальному
-
-    // Обновляем размер полоски здоровья в зависимости от максимального здоровья
     float healthPercentage = static_cast<float>(health) / maxHealth;
     healthBar.setSize(Vector2f(50 * healthPercentage, 10));  // Пропорционально максимальному здоровью)
 }
@@ -32,6 +44,7 @@ void Enemy::calculateStats() {
 int Enemy::getLevel() const {
     return level;  // Возвращаем текущий уровень врага
 }
+
 
 void Enemy::levelUp() {
     level++;  // Увеличиваем уровень
