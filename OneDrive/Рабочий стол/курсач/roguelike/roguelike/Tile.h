@@ -1,3 +1,4 @@
+//Tile.h
 #ifndef TILE_H
 #define TILE_H
 
@@ -15,6 +16,7 @@ public:
     bool isOccupied;
     bool hasEnemy;  // Проверка на то, есть ли враг на клетке
     bool isWall;
+    const sf::RectangleShape& getShape() const;
 
     Tile();
     Tile(int x, int y);

@@ -1,3 +1,4 @@
+//Enemy.h
 #ifndef ENEMY_H
 #define ENEMY_H
 
@@ -11,7 +12,7 @@ using namespace sf;
 class Enemy {
 public:
     // Конструктор врага
-    Enemy(int gridX, int gridY);
+    Enemy(int gridX, int gridY, int level = 1);
 
     // Установка позиции врага
     void setPosition(int gridX, int gridY);
@@ -27,6 +28,14 @@ public:
 
     // Нанесение урона врагу
     void takeDamage(int damage);
+    
+    // Получение силы атаки
+    int getAttackPower() const;
+
+    // Получение текущего уровня врага
+    int getLevel() const;
+
+    void levelUp();
 
     // Поиск пути (A*)
     std::vector<Vector2i> findPath(const std::vector<std::vector<Tile>>& grid, Vector2i start, Vector2i goal);
@@ -34,8 +43,13 @@ public:
 private:
     int health;             // Текущее здоровье врага
     int maxHealth;          // Максимальное здоровье врага
+    int attackPower;        // Сила атаки врага
+    int level;              // Уровень врага
     RectangleShape enemyShape; // Форма врага
     RectangleShape healthBar;  // Полоска здоровья
+
+    // Метод для вычисления здоровья на основе уровня
+    void calculateStats();
 };
 
 // Хэш-функтор для Vector2i

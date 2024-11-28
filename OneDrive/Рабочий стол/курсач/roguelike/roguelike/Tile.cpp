@@ -1,3 +1,4 @@
+//Tile.cpp
 #include "Tile.h"
 
 // Конструктор по умолчанию
@@ -28,4 +29,8 @@ Tile::Tile(int x, int y) : isOccupied(false), hasEnemy(false), isWall(false) {
 
     shape.setOutlineThickness(1);
     shape.setOutlineColor(Color::Black);
+}
+
+const sf::RectangleShape& Tile::getShape() const {
+    return shape; // Возвращаем ссылку на форму тайла
 }

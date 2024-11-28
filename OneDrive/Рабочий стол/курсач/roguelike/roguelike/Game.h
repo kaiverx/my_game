@@ -1,5 +1,3 @@
-// Game.h
-
 #ifndef GAME_H
 #define GAME_H
 
@@ -8,56 +6,84 @@
 #include <memory>
 #include "Tile.h"
 #include "Enemy.h"
+#include "Mage.h"
+#include "Warrior.h"
+#include "Level.h"
 
 using namespace sf;
 using namespace std;
 
 class Game {
 public:
-    Game();
-    void run();
+    Game();                    // Конструктор
+    void run();                // Основной цикл игры
 
 private:
+    // Основное окно игры
     RenderWindow window;
-    RectangleShape player;
-    CircleShape playerHealthCircle;
-    Text playerHealthText;
-    Font font;
-    int playerMaxHealth, playerHealth;
-    vector<vector<Tile>> grid;
-    vector<shared_ptr<Enemy>> enemies;
-    RectangleShape mapShape;
 
-    CircleShape endTurnButton;
-    Text endTurnButtonText;
+    // Игрок и его атрибуты
+    RectangleShape playerShape;  // Форма игрока
+    int playerMaxHealth;         // Максимальное здоровье игрока
+    int playerHealth;            // Текущее здоровье игрока
+    Character* player;           // Указатель на выбранного персонажа
+    Warrior warrior;             // Воин как один из персонажей
+    Mage mage;                   // Маг как второй персонаж
 
-    int attackDamage;  // Урон, наносимый игроком
-    int playerActionPoints, enemyActionPoints;
-    int maxMovesPerTurn, playerMovesLeft, enemyMovesLeft;
-    bool playerTurn;
-    bool canAttack;  // Флаг для отслеживания, может ли игрок атаковать
+    // Интерфейс для игрока
+    CircleShape playerHealthCircle;  // Графическое представление здоровья
+    Text playerHealthText;           // Текст для отображения здоровья
+    Font font;                       // Шрифт для текста
+    Text turnText;                   // Текст "Ваш ход"
+    bool showTurnText;               // Флаг показа текста "Ваш ход"
+    Clock turnTextTimer;             // Таймер для текста "Ваш ход"
 
-    void createMap();
-    void handleEvents();
-    void endTurn();
-    void enemyAction();
-    void updateHealthText();
-    void update();
-    void render();
-    void playerAttack();  // Функция для атаки игрока
+    // Карта и игровые элементы
+    vector<vector<Tile>> grid;       // Игровая сетка (карта)
+    RectangleShape mapShape;         // Общая форма карты
+    vector<shared_ptr<Enemy>> enemies; // Враги на карте
+    vector<RectangleShape> healthBars; // Полоски здоровья врагов
 
-    Text turnText; // Текст для отображения "Ваш ход"
-    bool showTurnText; // Флаг для управления видимостью текста
-    Clock turnTextTimer; // Таймер для отсчета времени отображения текста
+    // Механики боя и хода
+    int attackDamage;               // Урон игрока
+    int playerActionPoints;         // Очки действий игрока
+    int enemyActionPoints;          // Очки действий врага
+    int maxMovesPerTurn;            // Максимум ходов за один ход
+    int playerMovesLeft;            // Остаток ходов игрока
+    int enemyMovesLeft;             // Остаток ходов врага
+    bool playerTurn;                // Флаг текущего хода игрока
+    bool canAttack;                 // Флаг, можно ли атаковать
+    bool isPreparingAttack = false; // Состояние подготовки к атаке
+    std::shared_ptr<Enemy> selectedEnemy = nullptr; // Указатель на выбранного врага
+    int attackRangeX = 1;           // Радиус атаки по оси X
+    int attackRangeY = 1;           // Радиус атаки по оси Y
+    int attackDirectionX = 0;  // Направление по оси X (влево/вправо)
+    int attackDirectionY = 0;  // Направление по оси Y (вверх/вниз)
 
-    bool isAttacking;  // Флаг для определения, активен ли режим атаки
-    CircleShape attackButton;  // Кнопка для активации атаки
-    Text attackButtonText;  // Текст на кнопке для атаки
+    // Элементы интерфейса для кнопок
+    CircleShape endTurnButton;      // Кнопка окончания хода
+    Text endTurnButtonText;         // Текст кнопки окончания хода
+    CircleShape mageButton;         // Кнопка выбора мага
+    CircleShape warriorButton;      // Кнопка выбора воина
+    CircleShape attackButton;       // Кнопка атаки
+    Text attackButtonText;          // Текст на кнопке атаки
 
-    vector<RectangleShape> healthBars;  // Для хранения полосок здоровья врагов
+    // Вспомогательные флаги
+    bool isAttacking;               // Флаг режима атаки
 
-    // Новые функции
-    
+    // Приватные методы
+    void createMap();               // Генерация карты
+    void handleEvents();            // Обработка событий
+    void update();                  // Обновление игрового состояния
+    void render();                  // Отрисовка элементов
+    void endTurn();                 // Завершение хода игрока
+    void enemyAction();             // Действия врагов
+    void updateHealthText();        // Обновление текста здоровья
+    void playerAttack();            // Атака игрока
+    void chooseCharacter(int choice); // Выбор персонажа (1 - воин, 2 - маг)
+    void highlightAttackArea();     // Подсветка области атаки
+    void spawnEnemies(int count);
+    void onEnemyDefeated(std::shared_ptr<Enemy>& enemy);
 };
 
 #endif // GAME_H

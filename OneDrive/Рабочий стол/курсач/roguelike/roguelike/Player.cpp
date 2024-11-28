@@ -1,50 +1,68 @@
+// Player.cpp
 #include "Player.h"
+#include <iostream>
 
-// Конструктор игрока
-Player::Player(int startX, int startY, int maxHealth, int maxActionPoints) {
-    playerShape.setSize(Vector2f(50, 50));  // Размер игрока
-    playerShape.setFillColor(Color::Green); // Цвет игрока
-    playerShape.setPosition(startX * 50, startY * 50);  // Начальная позиция
-
-    this->maxHealth = maxHealth;   // Устанавливаем максимальное здоровье
-    this->health = maxHealth;      // Текущее здоровье равно максимальному
-    this->maxActionPoints = maxActionPoints;  // Устанавливаем максимальные очки действия
-    this->actionPoints = maxActionPoints;     // Изначально все очки действия доступны
+Player::Player(int health, int mana, int attackDamage, int defense, int movementRange, int actionPoints)
+    : health(health), maxHealth(health), mana(mana), maxMana(mana),
+    attackDamage(attackDamage), defense(defense), movementRange(movementRange), actionPoints(actionPoints) {
+    shape.setSize(Vector2f(50, 50));  // Размер игрока
+    shape.setFillColor(Color::Green); // Цвет игрока (можно изменить в зависимости от типа персонажа)
 }
 
-// Получение формы игрока
-RectangleShape Player::getShape() const {
-    return playerShape;
+void Player::move(int dx, int dy, std::vector<std::vector<Tile>>& grid) {
+    // Логика для перемещения по сетке
+    // Проверка доступности клетки для движения
+    int newX = shape.getPosition().x / 50 + dx;
+    int newY = shape.getPosition().y / 50 + dy;
+
+    if (newX >= 0 && newX < GRID_WIDTH && newY >= 0 && newY < GRID_HEIGHT && !grid[newY][newX].isOccupied) {
+        shape.setPosition(newX * 50, newY * 50);
+    }
 }
 
-// Получение текущего здоровья игрока
-int Player::getHealth() const {
-    return health;
+void Player::attack(Player& target) {
+    // Логика для атаки другого игрока
+    int damageDealt = attackDamage - target.defense;
+    if (damageDealt > 0) {
+        target.takeDamage(damageDealt);
+    }
 }
 
-// Нанесение урона игроку
 void Player::takeDamage(int damage) {
     health -= damage;
-    if (health < 0) health = 0;  // Убедимся, что здоровье не станет отрицательным
+    if (health < 0) health = 0;
 }
 
-// Получение текущих очков действия игрока
-int Player::getActionPoints() const {
-    return actionPoints;
+void Player::heal(int amount) {
+    health += amount;
+    if (health > maxHealth) health = maxHealth;
 }
 
-// Использование очков действия
-void Player::useActionPoints(int points) {
-    actionPoints -= points;
-    if (actionPoints < 0) actionPoints = 0;  // Очки действия не могут быть отрицательными
+void Player::regenerateMana(int amount) {
+    mana += amount;
+    if (mana > maxMana) mana = maxMana;
 }
 
-// Сброс позиции игрока
-void Player::resetPosition(int x, int y) {
-    playerShape.setPosition(x * 50, y * 50);  // Устанавливаем новую позицию игрока
+void Player::draw(RenderWindow& window) {
+    window.draw(shape);
 }
 
-// Проверка жив ли игрок
+bool Player::useMana(int amount) {
+    if (mana >= amount) {
+        mana -= amount;
+        return true;
+    }
+    return false;
+}
+
 bool Player::isAlive() const {
     return health > 0;
+}
+
+void Player::setPosition(int x, int y) {
+    shape.setPosition(x * 50, y * 50);
+}
+
+Vector2i Player::getPosition() const {
+    return Vector2i(shape.getPosition().x / 50, shape.getPosition().y / 50);
 }

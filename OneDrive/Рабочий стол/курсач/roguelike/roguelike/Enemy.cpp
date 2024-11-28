@@ -5,17 +5,37 @@
 #include <unordered_map>
 
 // Конструктор врага
-Enemy::Enemy(int gridX, int gridY) {
+Enemy::Enemy(int gridX, int gridY, int level) {
+    this->level = level;  // Устанавливаем уровень
     enemyShape.setSize(Vector2f(50, 50)); // Размер врага
     enemyShape.setFillColor(Color::Blue); // Цвет врага
     setPosition(gridX, gridY);            // Установка позиции врага
-    maxHealth = 100;                      // Максимальное здоровье
-    health = maxHealth;                   // Текущее здоровье
+    calculateStats();                      // Вычисляем здоровье и силу атаки
 
     // Настройка полоски здоровья
     healthBar.setSize(Vector2f(50, 10));
     healthBar.setFillColor(Color::Red);
     healthBar.setPosition(gridX * 50, gridY * 50 + 40); // Сразу устанавливаем позицию.
+}
+
+// Метод для вычисления здоровья и силы атаки на основе уровня
+void Enemy::calculateStats() {
+    maxHealth = 100 + (level - 1) * 10;  // Каждое увеличение уровня дает +10 к здоровью
+    attackPower = 10 + (level - 1) * 1;   // Каждое увеличение уровня дает +1 к силе атаки
+    health = maxHealth;                   // Текущее здоровье врага всегда равно максимальному
+
+    // Обновляем размер полоски здоровья в зависимости от максимального здоровья
+    float healthPercentage = static_cast<float>(health) / maxHealth;
+    healthBar.setSize(Vector2f(50 * healthPercentage, 10));  // Пропорционально максимальному здоровью)
+}
+
+int Enemy::getLevel() const {
+    return level;  // Возвращаем текущий уровень врага
+}
+
+void Enemy::levelUp() {
+    level++;  // Увеличиваем уровень
+    calculateStats();  // Пересчитываем параметры врага
 }
 
 // Установка позиции врага
@@ -26,6 +46,9 @@ void Enemy::setPosition(int gridX, int gridY) {
 
 // Возвращает форму врага
 RectangleShape Enemy::getShape() const {
+    if (this == nullptr) {  // Если указатель на объект равен null
+        throw std::runtime_error("Enemy object is not initialized!");
+    }
     return enemyShape;
 }
 
@@ -39,7 +62,7 @@ bool Enemy::isAlive() const {
     return health > 0;
 }
 
-// Нанесение урона
+// Нанесение урона врагу
 void Enemy::takeDamage(int damage) {
     health -= damage;
     if (health < 0) health = 0;
@@ -47,6 +70,11 @@ void Enemy::takeDamage(int damage) {
     // Обновление полоски здоровья
     float healthPercentage = static_cast<float>(health) / maxHealth;
     healthBar.setSize(Vector2f(50 * healthPercentage, 10));
+}
+
+// Метод для получения силы атаки
+int Enemy::getAttackPower() const {
+    return attackPower;
 }
 
 // Вычисление эвристического расстояния Манхэттена
