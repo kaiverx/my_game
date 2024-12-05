@@ -1,13 +1,21 @@
 #include "Character.h"
 
-Character::Character(int health, int attack, sf::Color color, int attackRangeX, int attackRangeY)
-    : health(health), maxHealth(health), attackPower(attack), attackRangeX(attackRangeX), attackRangeY(attackRangeY), level(1), experience(0) {
+Character::Character(int MovesPerTurn, int health, int attack, sf::Color color, int attackRangeX, int attackRangeY)
+    : MovesPerTurn(MovesPerTurn), health(health), maxHealth(health), attackPower(attack), attackRangeX(attackRangeX), attackRangeY(attackRangeY), level(1), experience(0) {
     setSize(sf::Vector2f(50, 50));  // Размер персонажа
     setFillColor(color);  // Устанавливаем цвет
 }
 
 int Character::getAttackDamage() const {
     return attackPower;
+}
+
+int Character::getMovesPerTurn() const {
+    return MovesPerTurn; // Возвращаем количество движений на ход
+}
+
+void Character::setMovesPerTurn(int moves) {
+    MovesPerTurn = moves; // Устанавливаем новое значение
 }
 
 int Character::getHealth() const {

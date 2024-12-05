@@ -5,37 +5,40 @@
 
 class Character : public sf::RectangleShape {
 public:
-    Character(int health, int attack, sf::Color color, int attackRangeX, int attackRangeY);
+    Character(int MovesPerTurn, int health, int attack, sf::Color color, int attackRangeX, int attackRangeY);
 
-    virtual int getAttackDamage() const;
-    int getHealth() const;
-    void setHealth(int h);
-    void takeDamage(int damage);
-    int getMaxHealth() const;
-    bool isAlive() const;
+    virtual int getAttackDamage() const;  // Получение урона
+    int getHealth() const;               // Получение текущего здоровья
+    void setHealth(int h);               // Установка здоровья
+    void takeDamage(int damage);         // Получение урона
+    int getMaxHealth() const;            // Получение максимального здоровья
+    bool isAlive() const;                // Проверка, жив ли персонаж
 
-    void levelUp();  // Метод повышения уровня
+    int getMovesPerTurn() const;         // Геттер для движений
+    void setMovesPerTurn(int moves);     // Сеттер для движений
 
-    int getLevel() const;
-    int getAttackPower() const;
-    int getExperience() const;  // Получение опыта
+    void levelUp();                      // Повышение уровня
 
-    void gainExperience(int amount);  // Получение опыта
+    int getLevel() const;                // Получение уровня
+    int getAttackPower() const;          // Получение силы атаки
+    int getExperience() const;           // Получение опыта
 
-    virtual void attack() = 0;
-    virtual int getAttackRangeX() const = 0;
-    virtual int getAttackRangeY() const = 0;
+    void gainExperience(int amount);     // Получение опыта
+
+    virtual void attack() = 0;           // Виртуальная функция атаки
+    virtual int getAttackRangeX() const = 0;  // Радиус атаки по X
+    virtual int getAttackRangeY() const = 0;  // Радиус атаки по Y
 
 private:
-    int health;
-    int maxHealth;
-    int attackPower;
-    int level;
-    int experience;  // Новый параметр - опыт игрока
-    int attackRangeX;
-    int attackRangeY;
-    sf::RectangleShape playerShape;
-    sf::RectangleShape healthBar;
+    int MovesPerTurn;       // Количество движений за ход
+    int health;             // Текущее здоровье
+    int maxHealth;          // Максимальное здоровье
+    int attackPower;        // Сила атаки
+    int level;              // Уровень персонажа
+    int experience;         // Опыт персонажа
+    int attackRangeX;       // Радиус атаки по X
+    int attackRangeY;       // Радиус атаки по Y
+    sf::RectangleShape healthBar;  // Полоска здоровья
 };
 
 #endif // CHARACTER_H

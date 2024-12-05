@@ -9,6 +9,7 @@
 #include "Mage.h"
 #include "Warrior.h"
 #include "Level.h"
+#include "Character.h"
 
 using namespace sf;
 using namespace std;
@@ -17,6 +18,7 @@ class Game {
 public:
     Game();                    // Конструктор
     void run();                // Основной цикл игры
+    void choosePerson(int choose);
 
 private:
     // Основное окно игры
@@ -41,6 +43,7 @@ private:
     Text playerDMG;
     Text playerHP;
     Text enemyLVL;
+    Text bossLvl;
 
     // Карта и игровые элементы
     vector<vector<Tile>> grid;       // Игровая сетка (карта)
@@ -78,6 +81,8 @@ private:
     bool isAttacking;               // Флаг режима атаки
     int enemyLvlCount;
     int bossLvlCount;
+
+
 
     // Приватные методы
     void createMap();               // Генерация карты

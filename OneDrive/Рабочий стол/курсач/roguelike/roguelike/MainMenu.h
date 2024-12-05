@@ -2,7 +2,6 @@
 #define MAINMENU_H
 
 #include <SFML/Graphics.hpp>
-#include "Button.h"
 #include <vector>
 using namespace sf;
 class MainMenu {

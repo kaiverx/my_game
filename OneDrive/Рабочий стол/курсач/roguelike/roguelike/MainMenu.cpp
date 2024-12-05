@@ -1,9 +1,10 @@
 // MainMenu.cpp
 #include <SFML/Graphics.hpp>
-#include "Game.h" // Предполагаем, что класс Game уже существует
+#include "Game.h" 
 #include <vector>
 #include "MainMenu.h"
 #include<iostream>
+#include"ChosePerson.h"
 
 using namespace sf;
 
@@ -92,7 +93,6 @@ void MainMenu::runMenu() {
 
 void MainMenu::handleEvents() {
     Event event;
-    Game game;
     while (window.pollEvent(event)) {
         if (event.type == Event::Closed) {
             window.close();
@@ -101,7 +101,9 @@ void MainMenu::handleEvents() {
             if (event.mouseButton.button == Mouse::Left) {
                 Vector2i mousePos = Mouse::getPosition(window);
                 if (playButtonShape.getGlobalBounds().contains(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y))) {
-                    game.run();
+                    window.close();
+                    ChosePerson person;
+                    person.runPerson();
                 }
                 if (liaderBoardButtonShape.getGlobalBounds().contains(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y))) {
 

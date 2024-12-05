@@ -1,2 +1,161 @@
-﻿  MainMenu.cpp
+﻿  ChosePerson.cpp
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\ChosePerson.cpp(20,39): warning C4305: аргумент: усечение из "double" в "float"
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\ChosePerson.cpp(20,34): warning C4305: аргумент: усечение из "double" в "float"
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\ChosePerson.cpp(27,42): warning C4305: аргумент: усечение из "double" в "float"
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\ChosePerson.cpp(27,37): warning C4305: аргумент: усечение из "double" в "float"
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\ChosePerson.cpp(34,41): warning C4305: аргумент: усечение из "double" в "float"
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\ChosePerson.cpp(34,36): warning C4305: аргумент: усечение из "double" в "float"
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\ChosePerson.cpp(41,41): warning C4305: аргумент: усечение из "double" в "float"
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\ChosePerson.cpp(41,35): warning C4305: аргумент: усечение из "double" в "float"
+  Game.cpp
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(123,29): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(123,29): warning C4244:         with
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(123,29): warning C4244:         [
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(123,29): warning C4244:             T=float
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(123,29): warning C4244:         ]
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(124,29): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(124,29): warning C4244:         with
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(124,29): warning C4244:         [
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(124,29): warning C4244:             T=float
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(124,29): warning C4244:         ]
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(128,56): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(128,47): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(138,29): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(138,29): warning C4244:         with
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(138,29): warning C4244:         [
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(138,29): warning C4244:             T=float
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(138,29): warning C4244:         ]
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(139,29): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(139,29): warning C4244:         with
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(139,29): warning C4244:         [
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(139,29): warning C4244:             T=float
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(139,29): warning C4244:         ]
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(143,56): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(143,47): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(153,29): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(153,29): warning C4244:         with
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(153,29): warning C4244:         [
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(153,29): warning C4244:             T=float
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(153,29): warning C4244:         ]
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(154,29): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(154,29): warning C4244:         with
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(154,29): warning C4244:         [
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(154,29): warning C4244:             T=float
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(154,29): warning C4244:         ]
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(158,56): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(158,47): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(168,29): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(168,29): warning C4244:         with
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(168,29): warning C4244:         [
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(168,29): warning C4244:             T=float
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(168,29): warning C4244:         ]
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(169,29): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(169,29): warning C4244:         with
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(169,29): warning C4244:         [
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(169,29): warning C4244:             T=float
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(169,29): warning C4244:         ]
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(173,56): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(173,47): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(244,26): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(244,26): warning C4244:         with
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(244,26): warning C4244:         [
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(244,26): warning C4244:             T=float
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(244,26): warning C4244:         ]
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(245,26): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(245,26): warning C4244:         with
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(245,26): warning C4244:         [
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(245,26): warning C4244:             T=float
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(245,26): warning C4244:         ]
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(248,30): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(248,30): warning C4244:         with
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(248,30): warning C4244:         [
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(248,30): warning C4244:             T=float
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(248,30): warning C4244:         ]
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(249,30): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(249,30): warning C4244:         with
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(249,30): warning C4244:         [
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(249,30): warning C4244:             T=float
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(249,30): warning C4244:         ]
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(252,64): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(252,46): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(334,89): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(334,89): warning C4244:         with
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(334,89): warning C4244:         [
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(334,89): warning C4244:             T=float
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(334,89): warning C4244:         ]
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(334,89): warning C4244:         and
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(334,89): warning C4244:         [
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(334,89): warning C4244:             T=int
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(334,89): warning C4244:         ]
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(334,52): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(334,52): warning C4244:         with
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(334,52): warning C4244:         [
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(334,52): warning C4244:             T=float
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(334,52): warning C4244:         ]
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(334,52): warning C4244:         and
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(334,52): warning C4244:         [
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(334,52): warning C4244:             T=int
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(334,52): warning C4244:         ]
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(345,116): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(345,116): warning C4244:         with
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(345,116): warning C4244:         [
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(345,116): warning C4244:             T=float
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(345,116): warning C4244:         ]
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(345,116): warning C4244:         and
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(345,116): warning C4244:         [
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(345,116): warning C4244:             T=int
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(345,116): warning C4244:         ]
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(345,69): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(345,69): warning C4244:         with
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(345,69): warning C4244:         [
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(345,69): warning C4244:             T=float
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(345,69): warning C4244:         ]
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(345,69): warning C4244:         and
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(345,69): warning C4244:         [
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(345,69): warning C4244:             T=int
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(345,69): warning C4244:         ]
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(523,46): warning C4554: "&": проверьте приоритет операторов на ошибки; для уточнения приоритета используйте скобки
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(560,29): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(560,29): warning C4244:         with
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(560,29): warning C4244:         [
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(560,29): warning C4244:             T=float
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(560,29): warning C4244:         ]
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(561,29): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(561,29): warning C4244:         with
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(561,29): warning C4244:         [
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(561,29): warning C4244:             T=float
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(561,29): warning C4244:         ]
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(592,29): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(592,29): warning C4244:         with
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(592,29): warning C4244:         [
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(592,29): warning C4244:             T=float
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(592,29): warning C4244:         ]
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(593,29): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(593,29): warning C4244:         with
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(593,29): warning C4244:         [
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(593,29): warning C4244:             T=float
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(593,29): warning C4244:         ]
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(624,29): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(624,29): warning C4244:         with
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(624,29): warning C4244:         [
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(624,29): warning C4244:             T=float
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(624,29): warning C4244:         ]
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(625,29): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(625,29): warning C4244:         with
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(625,29): warning C4244:         [
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(625,29): warning C4244:             T=float
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(625,29): warning C4244:         ]
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(656,29): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(656,29): warning C4244:         with
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(656,29): warning C4244:         [
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(656,29): warning C4244:             T=float
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(656,29): warning C4244:         ]
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(657,29): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(657,29): warning C4244:         with
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(657,29): warning C4244:         [
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(657,29): warning C4244:             T=float
+C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\roguelike\Game.cpp(657,29): warning C4244:         ]
+  MainMenu.cpp
+  roguelike.cpp
+  Создание кода...
   roguelike.vcxproj -> C:\Users\Dmitry\OneDrive\Рабочий стол\курсач\roguelike\x64\Debug\roguelike.exe

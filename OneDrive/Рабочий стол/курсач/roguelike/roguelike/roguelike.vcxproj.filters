@@ -30,12 +30,6 @@
     <ClCompile Include="Player.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Dagger.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="Inventory.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="Character.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -45,7 +39,7 @@
     <ClCompile Include="MainMenu.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Button.cpp">
+    <ClCompile Include="ChosePerson.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -62,16 +56,7 @@
     <ClInclude Include="Vector2i.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Weapon.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="Player.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Dagger.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Inventory.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Warrior.h">
@@ -86,10 +71,10 @@
     <ClInclude Include="Level.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Button.h">
+    <ClInclude Include="MainMenu.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="MainMenu.h">
+    <ClInclude Include="ChosePerson.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

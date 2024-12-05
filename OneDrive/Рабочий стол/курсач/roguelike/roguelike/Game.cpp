@@ -1,7 +1,9 @@
 #include "Game.h"
 #include <iostream>
+#include <random>  // Подключаем библиотеку для работы со случайными числами
 
-Game::Game() : playerActionPoints(1), enemyActionPoints(1), maxMovesPerTurn(6){
+
+Game::Game() : playerActionPoints(1), enemyActionPoints(1){
     window.create(VideoMode(1920, 1080), "RPG Game");
     window.setFramerateLimit(60);
     RectangleShape player;
@@ -71,17 +73,12 @@ Game::Game() : playerActionPoints(1), enemyActionPoints(1), maxMovesPerTurn(6){
     enemyLVL.setFillColor(sf::Color::White);
     enemyLVL.setPosition(1725, 200);
 
-    mageButton.setRadius(70);
-    mageButton.setOutlineThickness(5);
-    mageButton.setOutlineColor(Color::White);
-    mageButton.setFillColor(Color(0, 200, 200)); // Цвет кнопки
-    mageButton.setPosition(1700, 500); // Позиция кнопки
-
-    warriorButton.setRadius(70);
-    warriorButton.setOutlineThickness(5);
-    warriorButton.setOutlineColor(Color::White);
-    warriorButton.setFillColor(Color(200, 200, 0)); // Цвет кнопки
-    warriorButton.setPosition(1700, 300); // Позиция кнопки
+    bossLvl.setFont(font);
+    bossLvl.setString("BOSS LVL: 0");
+    bossLvl.setCharacterSize(16);
+    bossLvl.setStyle(sf::Text::Bold);
+    bossLvl.setFillColor(sf::Color::White);
+    bossLvl.setPosition(1725, 250);
 
     createMap();
 
@@ -183,7 +180,8 @@ void Game::highlightAttackArea() {
 }
 
 
-void Game::run() {
+void Game::run(){
+
     while (window.isOpen()) {
         handleEvents();
         update();
@@ -213,7 +211,6 @@ void Game::chooseCharacter(int choice) {
 
     if (choice == 1) {
         player = new Warrior(); // Создаем воина
-
     }
     else if (choice == 2) {
         player = new Mage();  // Создаем мага
@@ -299,15 +296,6 @@ void Game::handleEvents() {
         if (event.type == Event::MouseButtonPressed) {
             if (event.mouseButton.button == Mouse::Left) {
                 Vector2i mousePos = Mouse::getPosition(window);
-
-                // Выбор персонажа
-                if (mageButton.getGlobalBounds().contains(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y))) {
-                    chooseCharacter(2);  // Выбираем мага
-                }
-                else if (warriorButton.getGlobalBounds().contains(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y))) {
-                    chooseCharacter(1);  // Выбираем воина
-                }
-
                 if (endTurnButton.getGlobalBounds().contains(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y))) {
                     endTurn();
                 }
@@ -316,11 +304,23 @@ void Game::handleEvents() {
     }
 }
 
+void Game::choosePerson(int choose) {
+    if (choose == 1) {
+        chooseCharacter(1);  // Выбираем воина
+    }
+    if (choose == 2) {
+        chooseCharacter(2);  // Выбираем мага
+    }
+}
+
 void Game::endTurn() {
     playerTurn = false;
     isPreparingAttack = false;
     enemyAction();
-    playerMovesLeft = maxMovesPerTurn;
+    // Устанавливаем оставшиеся ходы игрока равными максимальному количеству ходов
+    if (player) { // Проверяем, что указатель не равен nullptr
+        playerMovesLeft = player->getMovesPerTurn();
+    }
     canAttack = true;
     playerTurn = true;
 
@@ -404,45 +404,55 @@ void Game::enemyAction() {
 }
 
 void Game::spawnEnemies(int count) {
+    // Создаем генератор псевдослучайных чисел
+    std::random_device rd;                  // Источник случайности (seed)
+    std::mt19937 gen(rd());                 // Генератор псевдослучайных чисел
+    std::uniform_int_distribution<> disX(0, GRID_WIDTH - 1);  // Диапазон для X
+    std::uniform_int_distribution<> disY(0, GRID_HEIGHT - 1); // Диапазон для Y
+
     enemies.clear();  // Очищаем старых врагов
     enemyLvlCount += 1;
+
     if (enemyLvlCount % 5 == 0) {
         bossLvlCount += 1;
-        // Спавним врага в случайной позиции
-        int x = rand() % GRID_WIDTH;
-        int y = rand() % GRID_HEIGHT;
+
+        // Генерируем случайные координаты для босса
+        int x = disX(gen);
+        int y = disY(gen);
 
         // Убедимся, что клетка не занята
         while (grid[y][x].isOccupied || grid[y][x].hasEnemy) {
-            x = rand() % GRID_WIDTH;
-            y = rand() % GRID_HEIGHT;
+            x = disX(gen);
+            y = disY(gen);
         }
 
-        // Создаем нового врага и добавляем в список
-        auto enemy = std::make_shared<Enemy>(5, 5, bossLvlCount, true);  // Создаем босса с уровнем 1
-        enemy->levelUp();  // Увеличиваем уровень босса, если нужно
+        // Создаем босса и добавляем в список
+        auto enemy = std::make_shared<Enemy>(5, 5, bossLvlCount, true);  // Создаем босса
+        enemy->levelUp();  // Повышаем уровень босса
         enemies.push_back(enemy);
         grid[y][x].hasEnemy = true;
         grid[y][x].isOccupied = true;
     }
+
     for (int i = 0; i < count; ++i) {
-        // Спавним врага в случайной позиции
-        int x = rand() % GRID_WIDTH;
-        int y = rand() % GRID_HEIGHT;
+        // Генерируем случайные координаты для обычного врага
+        int x = disX(gen);
+        int y = disY(gen);
 
         // Убедимся, что клетка не занята
         while (grid[y][x].isOccupied || grid[y][x].hasEnemy) {
-            x = rand() % GRID_WIDTH;
-            y = rand() % GRID_HEIGHT;
+            x = disX(gen);
+            y = disY(gen);
         }
 
-        // Создаем нового врага и добавляем в список
-        auto enemy = make_shared<Enemy>(x, y, enemyLvlCount);  // Пример создания врага
+        // Создаем обычного врага и добавляем в список
+        auto enemy = std::make_shared<Enemy>(x, y, enemyLvlCount);  // Создаем врага
         enemies.push_back(enemy);
         grid[y][x].hasEnemy = true;
         grid[y][x].isOccupied = true;
-    } 
-    updateEnemyLvlText();
+    }
+
+    updateEnemyLvlText();  // Обновляем текст уровня врагов
 }
 
 void Game::onEnemyDefeated(std::shared_ptr<Enemy>& enemy) {
@@ -478,8 +488,13 @@ void Game::updateHealthText() {
         playerHealthText.setString(" " + std::to_string(player->getHealth()) + "/" + std::to_string(player->getMaxHealth()));
     }
 }
+
 void Game::updateEnemyLvlText() {
     enemyLVL.setString("ENEMY LVL: " + std::to_string(enemyLvlCount));
+    if (enemyLvlCount >= 5) {
+        bossLvl.setString("BOSS LVL: " + std::to_string(bossLvlCount));
+    }
+    
 }
 
 void Game::render() {
@@ -519,9 +534,7 @@ void Game::render() {
     window.draw(playerDMG); // Урон игрока
     window.draw(playerHP);  // Текущее здоровье игрока
     window.draw(enemyLVL);
-
-    window.draw(mageButton);
-    window.draw(warriorButton);
+    window.draw(bossLvl);
 
     if (showTurnText) {
         window.draw(turnText);

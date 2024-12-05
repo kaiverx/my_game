@@ -6,7 +6,7 @@
 
 class Warrior : public Character {
 public:
-    Warrior() : Character(150, 30, sf::Color::Red,1,3) {}  // Устанавливаем радиус атаки для воина
+    Warrior() : Character(4, 150, 30, sf::Color::Yellow,1,3) {}  // Устанавливаем радиус атаки для воина
 
     void attack() override {
         // Реализация атаки для воина (например, физический удар)

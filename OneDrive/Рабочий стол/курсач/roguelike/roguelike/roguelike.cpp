@@ -5,7 +5,5 @@
 int main() {
     MainMenu menu;
     menu.runMenu();
-    //Game game;
-    //game.run();
     return 0;
 }

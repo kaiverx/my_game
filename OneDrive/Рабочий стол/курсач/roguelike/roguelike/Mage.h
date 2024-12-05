@@ -6,7 +6,7 @@
 
 class Mage : public Character {
 public:
-    Mage() : Character(100, 100, sf::Color::Blue, 3, 3) {}  // Устанавливаем радиус атаки для мага
+    Mage() : Character(6, 100, 100, sf::Color::Red, 3, 3) {}  // Устанавливаем радиус атаки для мага
 
     void attack() override {
         // Реализация атаки для мага (например, магический урон)
