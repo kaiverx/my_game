@@ -1,0 +1,303 @@
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+#include <iostream>
+#include <string>
+#include <vector>
+class Enemy
+{
+public:
+    // Конструктор
+    Enemy(int health, int damage, int speed, int weapon, int style, const sf::Texture& texture)
+        : health(health), damage(damage), speed(speed), weapon(weapon), style(style)
+    {
+        sprite.setTexture(texture);
+        // Установить начальную позицию или другие свойства по необходимости
+        sprite.setPosition(100.0f, 100.0f);  // Пример позиции
+    }
+
+    // Метод для обновления состояния врага
+    void update(sf::Time deltaTime)
+    {
+        // Обновить позицию в зависимости от скорости и deltaTime
+        sprite.move(speed * deltaTime.asSeconds(), 0);
+
+        // Другая логика обновления (например, обработка здоровья, урона и т.д.)
+    }
+
+    // Метод для отрисовки врага
+    void draw(sf::RenderWindow& window)
+    {
+        window.draw(sprite);
+    }
+
+private:
+    int health;
+    int damage;
+    int speed;
+    int weapon;
+    int style;
+    sf::Sprite sprite;
+};
+
+
+class Button
+{
+public:
+    // Конструктор кнопки принимает текст, шрифт, координаты x и y для размещения
+    Button(const std::string& text, sf::Font& font, float x, float y)
+    {
+        setlocale(LC_ALL, "RU");
+        // Размер кнопки
+        button.setSize(sf::Vector2f(200.f, 50.0f));
+        // Позиция кнопки
+        button.setPosition(x, y);
+        // Цвет кнопки
+        button.setFillColor(sf::Color::Blue);
+        // Шрифт кнопки
+        buttonText.setFont(font);
+        // Текст кнопки
+        buttonText.setString(text);
+        // Размер шрифта
+        buttonText.setCharacterSize(24);
+        // Цвет текста
+        buttonText.setFillColor(sf::Color::White);
+        // Установка текста внутри кнопки
+        buttonText.setPosition(x + (button.getSize().x - buttonText.getGlobalBounds().width) / 2, y + (button.getSize().y - buttonText.getGlobalBounds().height) / 2);
+    }
+
+    void draw(sf::RenderWindow& window)
+    {
+        window.draw(button); // Отрисовываем прямоугольник кнопки
+        window.draw(buttonText); // Отрисовываем текст
+    }
+
+    bool isClicked(sf::Vector2f mousePos)
+    {
+        // Проверка нахождения мыши внутри прямоугольника кнопки
+        return button.getGlobalBounds().contains(mousePos);
+    }
+private:
+    sf::RectangleShape button; // Прямоугольник
+    sf::Text buttonText; // Текст кнопки
+};
+//класс для ползунков
+/*class Slider {
+public:
+    Slider(float x, float y, float length, float initialValue) : value(initialValue) {
+        track.setSize(sf::Vector2f(length, 5));//размер
+        track.setPosition(x, y);//позиция
+        track.setFillColor(sf::Color::Black);//цвет
+
+        knob.setSize(sf::Vector2f(10, 20));
+        knob.setOrigin(5, 10);
+        knob.setPosition(x + length * initialValue, y + 2.5f);
+        knob.setFillColor(sf::Color::Red);
+    }
+    //рисование
+    void draw(sf::RenderWindow& window) {
+        window.draw(track);
+        window.draw(knob);
+    }
+
+    bool isClicked(sf::Vector2f mousePos) {
+        return knob.getGlobalBounds().contains(mousePos);//проверка на нажатие
+    }
+    //обновление позиции
+    void update(sf::Vector2f mousePos, float trackStartX, float trackEndX) {
+        if (mousePos.x < trackStartX) {
+            mousePos.x = trackStartX;
+        }
+        else if (mousePos.x > trackEndX) {
+            mousePos.x = trackEndX;
+        }
+        knob.setPosition(mousePos.x, knob.getPosition().y);
+        value = (mousePos.x - trackStartX) / (trackEndX - trackStartX);
+    }
+
+    float getValue() {
+        return value;
+    }
+
+private:
+    sf::RectangleShape track;
+    sf::RectangleShape knob;
+    float value;
+};*/
+
+#include <vector>
+//класс для анимаций
+class Animation
+{
+public:
+    // Конструктор
+    Animation(const sf::Texture& texture, int frameWidth, int frameHeight, int numFrames, float frameDuration)
+        : texture(texture), frameWidth(frameWidth), frameHeight(frameHeight), numFrames(numFrames), frameDuration(frameDuration), currentFrame(0), elapsedTime(0)
+    {
+        sprite.setTexture(texture);
+        sprite.setTextureRect(sf::IntRect(0, 0, frameWidth, frameHeight));
+    }
+
+    // Обновление анимации
+    void update(float deltaTime)
+    {
+        elapsedTime += deltaTime;
+        if (elapsedTime >= frameDuration)
+        {
+            // Переход к следующему кадру
+            currentFrame = (currentFrame + 1) % numFrames;
+            int left = (currentFrame * frameWidth) % texture.getSize().x;
+            int top = (currentFrame * frameWidth / texture.getSize().x) * frameHeight;
+            sprite.setTextureRect(sf::IntRect(left, top, frameWidth, frameHeight));
+            elapsedTime -= frameDuration;
+        }
+    }
+
+    // Отрисовка анимации
+    void draw(sf::RenderWindow& window)
+    {
+        window.draw(sprite);
+    }
+
+    // Установка позиции спрайта
+    void setPosition(float x, float y)
+    {
+        sprite.setPosition(x, y);
+    }
+
+private:
+    const sf::Texture& texture;
+    sf::Sprite sprite;
+    int frameWidth;
+    int frameHeight;
+    int numFrames;
+    float frameDuration;
+    int currentFrame;
+    float elapsedTime;
+};
+
+
+
+int main()
+{
+    setlocale(LC_ALL, "RU");
+    sf::RenderWindow window(sf::VideoMode(800, 600), "Roguelike Game Menu");
+
+    sf::Font font; // Объект шрифта
+    if (!font.loadFromFile("ComicSans.ttf")) // Загружаем шрифт из файла
+    {
+        std::cerr << "Ошибка загрузки шрифта" << std::endl; // Если загрузка шрифта не удалась, вывод ошибки
+        return -1; // Завершение программы с кодом ошибки -1
+    }
+
+    // Загрузка музыки
+    /*sf::Music backgroundMusic;
+    if (!backgroundMusic.openFromFile("Settings.ogg")) 
+    {
+        std::cerr << "Ошибка загрузки музыки" << std::endl;
+        return -1;
+    }
+    backgroundMusic.setLoop(true);
+    backgroundMusic.play();*/
+
+    // Создание кнопок меню
+    Button newGameButton("New Game", font, 300.0f, 200.0f); // Кнопка новой игры
+    Button settingButton("Setting", font, 300.0f, 300.0f); // Кнопка настроек
+    Button scoreBoardButton("Score Board", font, 300.0f, 400.0f); // Кнопка таблицы очков
+    Button exitButton("Exit", font, 300.0f, 500.0f); // Кнопка выхода из игры
+    Button backButton("Back", font, 300.0f, 500.0f); // Кнопка возврата
+
+    // Перечисление состояния игры
+    enum GameState { MENU, GAME, SETTINGS, EXIT };
+    GameState gameState = MENU; // Начальное значение игры - меню
+
+    // Основной цикл программы выполнение пока окно не закрыто
+    while (window.isOpen())
+    {
+        sf::Event event;
+        while (window.pollEvent(event)) // Обработка событий
+        {
+            if (event.type == sf::Event::Closed) // Если событие - закрытие окна
+                window.close(); // Закрытие окна
+
+            if (event.type == sf::Event::MouseButtonPressed) // Если нажали кнопку мыши
+            {
+                sf::Vector2f mousePos = window.mapPixelToCoords(sf::Mouse::getPosition(window)); // Получение координат мыши
+                if (gameState == MENU)
+                {
+                    if (newGameButton.isClicked(mousePos)) // Если нажата кнопка новой игры
+                        gameState = GAME; // Смена состояния игры на GAME
+                    if (settingButton.isClicked(mousePos)) // Если нажата кнопка настроек
+                        gameState = SETTINGS; // Смена состояния игры на настройки
+                    if (exitButton.isClicked(mousePos)) // Если нажата кнопка выхода из игры
+                        window.close(); // Закрытие окна
+                }
+                if (gameState==SETTINGS)
+                    if (backButton.isClicked(mousePos)) // Если нажата кнопка выхода из игры               
+                        gameState = MENU; // Смена состояния игры на меню                   
+            }
+        }
+
+        window.clear(sf::Color::White); // Очистка окна в белый цвет
+
+        if (gameState == MENU) // Если текущее состояние - меню
+        {
+            newGameButton.draw(window); // Отрисовка кнопки "New Game"
+            settingButton.draw(window); // Отрисовка кнопки "Setting"
+            exitButton.draw(window); // Отрисовка кнопки "Exit"
+        }
+        else if (gameState == GAME) // Если текущее состояние - игра
+        {
+            sf::Texture texture;
+            if (!texture.loadFromFile("enemy.png"))
+            {
+                return -1; // Не удалось загрузить текстуру
+            }
+            Enemy enemy(100, 10, 5, 1, 0, texture);
+
+            sf::Clock clock;
+            // Вычисление времени, прошедшего с предыдущего кадра
+            sf::Time deltaTime = clock.restart();
+
+            // Обновление состояния врага
+            enemy.update(deltaTime);
+
+            enemy.draw(window);
+
+            // Игра
+            /*sf::Text gameText; // Объект текста
+            gameText.setFont(font);
+            gameText.setFillColor(sf::Color::Black);
+            gameText.setCharacterSize(24);
+            gameText.setPosition(100.0f, 100.0f);
+            gameText.setString("Игра запущена, для возврата в меню нажмите ESC");
+            window.draw(gameText);*/
+
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+            {
+                gameState = MENU; // Смена состояния игры на меню
+            }
+        }
+        else if (gameState == SETTINGS) // Если текущее состояние - настройки
+        {
+            // Текст настроек
+            //Slider soundSlider(300.0f, 100.0f,10.0f, 5); // слайдер громкости
+            //Slider shederSlider(300.0f, 100.0f, 10.0f, 5);
+            backButton.draw(window);
+            /*sf::Text settingText;
+            settingText.setFont(font);
+            settingText.setFillColor(sf::Color::Black);
+            settingText.setCharacterSize(24);
+            settingText.setPosition(100.0f, 100.0f);
+            settingText.setString("Настройки запущены, для возврата в меню нажмите ESC");
+            window.draw(settingText);*/
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+            {
+                gameState = MENU; // Смена состояния игры на меню
+            }
+        }
+
+        window.display(); // Отображаем окно
+    }
+
+    return 0;
+}

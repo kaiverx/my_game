@@ -1,7 +1,7 @@
 #include "Game.h"
 #include <iostream>
 
-Game::Game() : playerActionPoints(1), enemyActionPoints(1), maxMovesPerTurn(6) {
+Game::Game() : playerActionPoints(1), enemyActionPoints(1), maxMovesPerTurn(6){
     window.create(VideoMode(1920, 1080), "RPG Game");
     window.setFramerateLimit(60);
     RectangleShape player;
@@ -108,7 +108,9 @@ Game::Game() : playerActionPoints(1), enemyActionPoints(1), maxMovesPerTurn(6) {
     isAttacking = false;  // По умолчанию атака не активна
     canAttack = true;
     enemyLvlCount = 1;
+    bossLvlCount = 0;
 }
+
 
 void Game::highlightAttackArea() {
     Vector2f playerPos = player->getPosition();
@@ -397,7 +399,7 @@ void Game::enemyAction() {
     // Если все враги побеждены, повышаем уровень игрока и спавним новых врагов
     if (allEnemiesDefeated) {
         player->levelUp();
-        spawnEnemies(1);    
+        spawnEnemies(4);    
     }
 }
 
@@ -405,6 +407,7 @@ void Game::spawnEnemies(int count) {
     enemies.clear();  // Очищаем старых врагов
     enemyLvlCount += 1;
     if (enemyLvlCount % 5 == 0) {
+        bossLvlCount += 1;
         // Спавним врага в случайной позиции
         int x = rand() % GRID_WIDTH;
         int y = rand() % GRID_HEIGHT;
@@ -416,7 +419,7 @@ void Game::spawnEnemies(int count) {
         }
 
         // Создаем нового врага и добавляем в список
-        auto enemy = std::make_shared<Enemy>(5, 5, 1, true);  // Создаем босса с уровнем 1
+        auto enemy = std::make_shared<Enemy>(5, 5, bossLvlCount, true);  // Создаем босса с уровнем 1
         enemy->levelUp();  // Увеличиваем уровень босса, если нужно
         enemies.push_back(enemy);
         grid[y][x].hasEnemy = true;
@@ -666,4 +669,4 @@ void Game::playerAttack() {
             }
         }
     }
-}
+} 

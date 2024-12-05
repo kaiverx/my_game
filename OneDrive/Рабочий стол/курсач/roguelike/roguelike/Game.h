@@ -77,6 +77,7 @@ private:
     // Вспомогательные флаги
     bool isAttacking;               // Флаг режима атаки
     int enemyLvlCount;
+    int bossLvlCount;
 
     // Приватные методы
     void createMap();               // Генерация карты
